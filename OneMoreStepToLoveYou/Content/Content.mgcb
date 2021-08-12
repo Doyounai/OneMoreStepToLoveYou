@@ -44,6 +44,27 @@
 /processorParam:TextureFormat=Compressed
 /build:debugFont.spritefont
 
+#begin dialogueMessege_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:dialogueMessege_font.spritefont
+
+#begin dialogueName_Font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:dialogueName_Font.spritefont
+
+#begin dialogueNextFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:dialogueNextFont.spritefont
+
 #begin image0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -56,6 +77,18 @@
 /processorParam:TextureFormat=Color
 /build:image0.png
 
+#begin nongBao.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:nongBao.png
+
 #begin pEarthRasengunSaiNaKung.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -67,6 +100,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:pEarthRasengunSaiNaKung.png
+
+#begin pEarthStand2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:pEarthStand2.png
 
 #begin Player.png
 /importer:TextureImporter
