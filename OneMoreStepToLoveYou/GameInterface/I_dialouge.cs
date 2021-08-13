@@ -81,6 +81,8 @@ namespace OneMoreStepToLoveYou.GameInterface
             characterSprite = new Sprite(null, Vector2.Zero, Color.White * 0);
 
             nameText = new text(nameFont, Color.Black, new Vector2(50, 780));
+           // float nameX = (1920 / 2) - nameFont.MeasureString("1234567").X;
+            //nameText = new text(nameFont, Color.Black, new Vector2());
             messegeText = new text(messegeFont, Color.Black, new Vector2(80, 840));
         }
 

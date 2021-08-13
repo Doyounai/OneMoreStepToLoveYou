@@ -14,7 +14,7 @@ namespace OneMoreStepToLoveYou.Entites
         public int DrawOrder { get; set; }
         public int m_moveStep;
 
-        private int crowdMoveStep = 5;
+        private int crowdMoveStep = 3;
         public List<gridPosition> originPath = new List<gridPosition>();
 
         public crowd(Texture2D texture, gridPosition gridPos)
