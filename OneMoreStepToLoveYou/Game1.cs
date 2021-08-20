@@ -68,7 +68,7 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
-            scene_LV1();
+            scene_LV6();
 
             // TODO: use this.Content to load your game content here
         }
@@ -99,6 +99,7 @@ namespace OneMoreStepToLoveYou
                     dialouge = new I_dialouge(graphics, Content.Load<SpriteFont>("dialogueName_Font"), Content.Load<SpriteFont>("dialogueMessege_font"));
                     dialouge.buttonSetup(graphics, Content.Load<SpriteFont>("dialogueNextFont"), 120, 80, 10, new Vector2(1690, 980), "Next", Color.Gray, Color.Black, Color.White, Color.White);
                     resetConfingulation();
+                    Content.Unload();
                     sceneChange();
                     is_fadeOut = true;
                 }
@@ -210,7 +211,7 @@ namespace OneMoreStepToLoveYou
         private void scene_LV1()
         {
             //grid
-            scene.entites.Add(new I_gridBox(6, 6, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(6, 6, 1, 5, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 1);
             gameManager.addShadowArea(0, 2);
@@ -261,7 +262,7 @@ namespace OneMoreStepToLoveYou
         private void scene_LV2()
         {
             //grid
-            scene.entites.Add(new I_gridBox(7, 8, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(7, 8, 0, 0, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 4);
             gameManager.addShadowArea(0, 6);
@@ -335,7 +336,7 @@ namespace OneMoreStepToLoveYou
         private void scene_LV4()
         {
             //grid
-            scene.entites.Add(new I_gridBox(7, 8, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(7, 8, 0, 0, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 3);
             gameManager.addShadowArea(1, 2);
@@ -408,7 +409,7 @@ namespace OneMoreStepToLoveYou
         private void scene_LV5()
         {
             //grid
-            scene.entites.Add(new I_gridBox(8, 7, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(8, 7, 0, 0, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
 
             gameManager.addShadowArea(1, 6);
@@ -469,7 +470,7 @@ namespace OneMoreStepToLoveYou
         private void scene_LV6()
         {
             //grid
-            scene.entites.Add(new I_gridBox(17, 7, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(17, 7, 0, 0, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 0);
             gameManager.addShadowArea(0, 1);
@@ -593,7 +594,7 @@ namespace OneMoreStepToLoveYou
             scene.entites.Add(new pEarth(new gridPosition(3, 0), Content, "CoketumpBreathe", 3, 1, 10));
             scene.entites[32].DrawOrder = 3;
             //dialoge
-            dialouge.sceneToGo = 2;
+            dialouge.sceneToGo = 1;
             dialouge.addDialogue(new dialouge("pEarth", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
             dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
