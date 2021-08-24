@@ -13,7 +13,7 @@ namespace OneMoreStepToLoveYou.GameInterface
     {
         public int DrawOrder { get; set; }
         private text[,] debugText;
-        private bool is_Debug = true;
+        private bool is_Debug = false;
 
         public I_gridBox(int row, int column, int startRow, int startColumn, SpriteFont font, GraphicsDeviceManager graphics)
         {
@@ -43,8 +43,8 @@ namespace OneMoreStepToLoveYou.GameInterface
 
             #region genarate test box texture
             //test box
-            Color colorA = new Color(51, 122, 184);
-            Color colorB = new Color(42, 183, 155);
+            Color colorA = new Color(51, 122, 184) * 0;
+            Color colorB = new Color(42, 183, 155) * 0;
             int strokSize = 8;
             Texture2D[] originGridItem = new Texture2D[2];
             /*

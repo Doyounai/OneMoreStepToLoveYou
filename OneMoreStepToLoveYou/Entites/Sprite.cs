@@ -14,6 +14,14 @@ namespace OneMoreStepToLoveYou.Entites
         public Vector2 position;
         public Color tintColor;
 
+        public Rectangle rec
+        {
+            get
+            {
+                return new Rectangle((int)this.position.X, (int)this.position.Y, gameSprite.Width, gameSprite.Height);
+            }
+        }
+
         public Rectangle spriteBox
         {
             get

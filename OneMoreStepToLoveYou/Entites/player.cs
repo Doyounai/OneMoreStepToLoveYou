@@ -14,6 +14,7 @@ namespace OneMoreStepToLoveYou.Entites
     {
         public int DrawOrder { get; set; }
         private bool is_yaDovNow = false;
+        private bool is_ssr = false;
 
         public player(Texture2D texture, gridPosition gridPos)
         {
@@ -59,7 +60,7 @@ namespace OneMoreStepToLoveYou.Entites
                 keyUp();
             }
             #endregion
-            checkCollectYa();
+            checkCollision();
 
         }
 
@@ -211,16 +212,21 @@ namespace OneMoreStepToLoveYou.Entites
             }
         }
 
-        public void checkCollectYa()
+        public void checkCollision()
         {
-            if (gameManager.ya == null)
-                return;
-
-            if (Vector2.Distance(this.sprite.position, gameManager.ya.sprite.position) <= 5f)
+            //yaDov
+            if (gameManager.ya != null && this.sprite.rec.Intersects(gameManager.ya.sprite.rec))
             {
                 Game1.scene.Remove(gameManager.ya);
                 gameManager.ya = null;
                 is_yaDovNow = true;
+            }
+            //ssr
+            if(gameManager.ssr != null && this.sprite.rec.Intersects(gameManager.ssr.sprite.rec))
+            {
+                Game1.scene.Remove(gameManager.ssr);
+                gameManager.ssr = null;
+                is_ssr = true;
             }
         }
 
@@ -228,7 +234,8 @@ namespace OneMoreStepToLoveYou.Entites
         {
             if(pos.row == gameManager.pEarthPosition.row && pos.column == gameManager.pEarthPosition.column)
             {
-                //this.sprite.tintColor = Color.Black;
+                if (!is_ssr)
+                    return;
                 //transition
                 Game1.dialouge.dialogeOn();
                 //Game1.changeSceneTo(2);

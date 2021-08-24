@@ -43,7 +43,7 @@ namespace OneMoreStepToLoveYou
             //graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 100;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             this.IsMouseVisible = true;
             graphics.ApplyChanges();
             base.Initialize();
@@ -68,6 +68,7 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
+            //titleLoad();
             scene_LV6();
 
             // TODO: use this.Content to load your game content here
@@ -99,7 +100,6 @@ namespace OneMoreStepToLoveYou
                     dialouge = new I_dialouge(graphics, Content.Load<SpriteFont>("dialogueName_Font"), Content.Load<SpriteFont>("dialogueMessege_font"));
                     dialouge.buttonSetup(graphics, Content.Load<SpriteFont>("dialogueNextFont"), 120, 80, 10, new Vector2(1690, 980), "Next", Color.Gray, Color.Black, Color.White, Color.White);
                     resetConfingulation();
-                    Content.Unload();
                     sceneChange();
                     is_fadeOut = true;
                 }
@@ -139,6 +139,8 @@ namespace OneMoreStepToLoveYou
                 spriteBatch.Begin(transformMatrix: camera.Transform);
             else
                 spriteBatch.Begin();
+
+            //bg_sprite.Draw(spriteBatch);
             scene.Draw(spriteBatch);
             /*string debugMessege = "";
             for (int i = 0; i < gameManager.GRID_ROW; i++)
@@ -166,6 +168,9 @@ namespace OneMoreStepToLoveYou
         {
             switch (sceneToGo)
             {
+                case 0:
+                    titleLoad();
+                    break;
                 case 1://Level 1
                     scene_LV1();
                     break;
@@ -208,10 +213,14 @@ namespace OneMoreStepToLoveYou
             gameManager.ya = null;
         }
 
+        private void titleLoad()
+        {
+            scene.entites.Add(new I_titleScene(graphics, Content.Load<SpriteFont>("debugFont"), Content.Load<Texture2D>("title_test2")));
+        }
         private void scene_LV1()
         {
             //grid
-            scene.entites.Add(new I_gridBox(6, 6, 1, 5, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(6, 6, 1, 7, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 1);
             gameManager.addShadowArea(0, 2);
@@ -252,6 +261,16 @@ namespace OneMoreStepToLoveYou
             //p earth
             scene.entites.Add(new pEarth(new gridPosition(0, 0), Content, "CoketumpBreathe", 3, 1, 10));
             scene.entites[14].DrawOrder = 3;
+
+            //ssr
+            scene.entites.Add(new yaDov(new gridPosition(5, 5), Content.Load<Texture2D>("qq")));
+            gameManager.ssr = (yaDov)scene.entites[15];
+            scene.entites[15].DrawOrder = 3;
+
+            //bg
+            scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv1")));
+            scene.entites[16].DrawOrder = 0;
+
             //dialoge
             dialouge.sceneToGo = 2;
             dialouge.addDialogue(new dialouge("p'Earth", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
@@ -262,7 +281,7 @@ namespace OneMoreStepToLoveYou
         private void scene_LV2()
         {
             //grid
-            scene.entites.Add(new I_gridBox(7, 8, 0, 0, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(7, 8, 2, 4, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 4);
             gameManager.addShadowArea(0, 6);
@@ -283,6 +302,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[1].DrawOrder = 2;
             //ya dob
             scene.entites.Add(new yaDov(new gridPosition(0, 1), Content.Load<Texture2D>("ya")));
+            gameManager.ya = (yaDov)scene.entites[2];
             scene.entites[2].DrawOrder = 2;
             //crowd
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 5)));
@@ -326,17 +346,35 @@ namespace OneMoreStepToLoveYou
             //p earth
             scene.entites.Add(new pEarth(new gridPosition(7, 0), Content, "CoketumpBreathe", 3, 1, 10));
             scene.entites[22].DrawOrder = 2;
+
+            //ssr
+            scene.entites.Add(new yaDov(new gridPosition(0, 5), Content.Load<Texture2D>("qq")));
+            gameManager.ssr = (yaDov)scene.entites[23];
+            scene.entites[23].DrawOrder = 3;
+
+            //bg
+            scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv2")));
+            scene.entites[24].DrawOrder = 0;
+
             //dialoge
             dialouge.sceneToGo = 4;
-            dialouge.addDialogue(new dialouge("pEarth", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "Yellow!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue(new dialouge("pEarth", "ma muuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "Mango!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue(new dialouge("pEarth", "rot gra ba", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "Vego!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue(new dialouge("pEarth", "fai chaek", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "zippo!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue(new dialouge("pEarth", "meet", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "e to!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue(new dialouge("pEarth", "chut chan nai", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "Wago!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
         }
         private void scene_LV4()
         {
             //grid
-            scene.entites.Add(new I_gridBox(7, 8, 0, 0, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(7, 8, 2, 4, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 3);
             gameManager.addShadowArea(1, 2);
@@ -358,6 +396,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[1].DrawOrder = 2;
             //ya dob
             scene.entites.Add(new yaDov(new gridPosition(6, 4), Content.Load<Texture2D>("ya")));
+            gameManager.ya = (yaDov)scene.entites[2];
             scene.entites[2].DrawOrder = 2;
             //crowd
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 5)));
@@ -391,6 +430,13 @@ namespace OneMoreStepToLoveYou
             //p earth
             scene.entites.Add(new pEarth(new gridPosition(0, 2), Content, "CoketumpBreathe", 3, 1, 10));
             scene.entites[17].DrawOrder = 2;
+            //ssr
+            scene.entites.Add(new yaDov(new gridPosition(5, 3), Content.Load<Texture2D>("qq")));
+            gameManager.ssr = (yaDov)scene.entites[18];
+            scene.entites[18].DrawOrder = 3;
+            //bg
+            scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv4")));
+            scene.entites[19].DrawOrder = 0;
             //dialoge
             dialouge.sceneToGo = 6;
             dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
@@ -409,49 +455,96 @@ namespace OneMoreStepToLoveYou
         private void scene_LV5()
         {
             //grid
-            scene.entites.Add(new I_gridBox(8, 7, 0, 0, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(8, 11, 1, 2, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
-
             gameManager.addShadowArea(1, 6);
             gameManager.addShadowArea(2, 6);
             gameManager.addShadowArea(3, 6);
             gameManager.addShadowArea(4, 6);
             gameManager.addShadowArea(5, 6);
-            gameManager.addShadowArea(4, 5);
+            gameManager.addShadowArea(6, 6);
+            gameManager.addShadowArea(7, 6);
+            gameManager.addShadowArea(8, 6);
+            gameManager.addShadowArea(1, 3);
+            gameManager.addShadowArea(2, 3);
+            gameManager.addShadowArea(3, 3);
+            gameManager.addShadowArea(4, 3);
+            gameManager.addShadowArea(5, 3);
+            gameManager.addShadowArea(6, 3);
+            gameManager.addShadowArea(7, 3);
+            gameManager.addShadowArea(8, 3);
+            gameManager.addShadowArea(9, 3);
+            gameManager.addShadowArea(9, 4);
+            gameManager.addShadowArea(9, 6);
+            gameManager.addShadowArea(1, 4);
+            gameManager.addShadowArea(2, 4);
 
+            gameManager.addShadowArea(7, 4);
+            gameManager.addShadowArea(8, 4);
+
+            gameManager.addShadowArea(5, 0);
+            gameManager.addShadowArea(5, 2);
+            gameManager.addShadowArea(6, 4);
+            gameManager.addShadowArea(6, 5);
+            gameManager.addShadowArea(7, 5);
             //player
-            scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(3, 7)));
+            scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(4, 7)));
             scene.entites[1].DrawOrder = 2;
+            //ya dob
+            scene.entites.Add(new yaDov(new gridPosition(10, 1), Content.Load<Texture2D>("ya")));
+            gameManager.ya = (yaDov)scene.entites[2];
+            scene.entites[2].DrawOrder = 2;
 
             //crowd
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 1)));
-            scene.entites[2].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 5)));
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(0, 5)));
             scene.entites[3].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 1)));
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 5)));
             scene.entites[4].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 2)));
-            scene.entites[5].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 3)));
-            scene.entites[6].DrawOrder = 3;
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 5)));
-            scene.entites[7].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(3, 1)));
-            scene.entites[8].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(3, 4)));
-            scene.entites[9].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(4, 2)));
-            scene.entites[10].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(4, 4)));
-            scene.entites[11].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(5, 2)));
-            scene.entites[12].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(5, 3)));
-            scene.entites[13].DrawOrder = 3;
+            scene.entites[5].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(0, 0)));
+            scene.entites[6].DrawOrder = 3;
 
-            //p earth
-            scene.entites.Add(new pEarth(new gridPosition(3, 5), Content, "CoketumpBreathe", 3, 1, 10));
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 2)));
+            scene.entites[7].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 1)));
+            scene.entites[8].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(3, 2)));
+            scene.entites[9].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(4, 1)));
+            scene.entites[10].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 0)));
+            scene.entites[11].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(3, 0)));
+            scene.entites[12].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(6, 1)));
+            scene.entites[13].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(8, 1)));
             scene.entites[14].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(7, 0)));
+            scene.entites[15].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(9, 0)));
+            scene.entites[16].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(7, 2)));
+            scene.entites[17].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(9, 2)));
+            scene.entites[18].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(10, 4)));
+            scene.entites[19].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(10, 0)));
+            scene.entites[20].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(10, 2)));
+            scene.entites[21].DrawOrder = 3;
+            //p earth
+            scene.entites.Add(new pEarth(new gridPosition(4, 5), Content, "CoketumpBreathe", 3, 1, 10));
+            scene.entites[22].DrawOrder = 3;
+            //ssr
+            scene.entites.Add(new yaDov(new gridPosition(8, 5), Content.Load<Texture2D>("qq")));
+            gameManager.ssr = (yaDov)scene.entites[23];
+            scene.entites[23].DrawOrder = 3;
+            //bg
+            scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv5")));
+            scene.entites[24].DrawOrder = 0;
             //dialoge
             dialouge.sceneToGo = 6;
             dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
@@ -470,7 +563,7 @@ namespace OneMoreStepToLoveYou
         private void scene_LV6()
         {
             //grid
-            scene.entites.Add(new I_gridBox(17, 7, 0, 0, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(17, 7, 0, 7, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 0);
             gameManager.addShadowArea(0, 1);
@@ -529,6 +622,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[1].DrawOrder = 2;
             //ya dob
             scene.entites.Add(new yaDov(new gridPosition(3, 11), Content.Load<Texture2D>("ya")));
+            gameManager.ya = (yaDov)scene.entites[2];
             scene.entites[2].DrawOrder = 2;
             //crowd
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 15)));
@@ -593,8 +687,15 @@ namespace OneMoreStepToLoveYou
             //p earth
             scene.entites.Add(new pEarth(new gridPosition(3, 0), Content, "CoketumpBreathe", 3, 1, 10));
             scene.entites[32].DrawOrder = 3;
+            //ssr
+            scene.entites.Add(new yaDov(new gridPosition(1, 3), Content.Load<Texture2D>("qq")));
+            gameManager.ssr = (yaDov)scene.entites[33];
+            scene.entites[33].DrawOrder = 3;
+            //bg
+            //scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv6")));
+            //scene.entites[34].DrawOrder = 0;
             //dialoge
-            dialouge.sceneToGo = 1;
+            dialouge.sceneToGo = 0;
             dialouge.addDialogue(new dialouge("pEarth", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
             dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));

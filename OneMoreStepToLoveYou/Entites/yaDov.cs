@@ -19,7 +19,6 @@ namespace OneMoreStepToLoveYou.Entites
             Vector2 position = gameManager.GRID_DATA[pos.row, pos.column].getCenterGridPosition;
             position -= kaninKitRail.getCenterPoint(image.Width, image.Height);
             this.sprite = new Sprite(image, position, Color.White);
-            gameManager.ya = this;
         }
 
         public void Draw(SpriteBatch spriteBatch)

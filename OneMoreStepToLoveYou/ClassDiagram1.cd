@@ -25,7 +25,7 @@
   <Class Name="OneMoreStepToLoveYou.Entites.gameManager">
     <Position X="23.5" Y="5.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>ABEAAIAACQAABgAAECAAIAAARAAAAAAAAACAAAAAAAA=</HashCode>
+      <HashCode>ABAAAIAACQAABgAAECAAIAAARAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>Entites\gameManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -84,7 +84,7 @@
   <Class Name="OneMoreStepToLoveYou.GameInterface.I_dialouge">
     <Position X="18.25" Y="9.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>gAZAAQAQABAAEgAIgAgAAAgAAAAAAFAgCACAAAAAAAI=</HashCode>
+      <HashCode>gAZEAAAYABCAEgAIgEgAoAgAgABEAFAgCACAAQAAAAI=</HashCode>
       <FileName>GameInterface\I_dialouge.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -119,9 +119,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="OneMoreStepToLoveYou.Game1">
-    <Position X="20.5" Y="3" Width="2.75" />
+    <Position X="20.5" Y="2.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>gAQAEEAMAgAAAwEAAAAAIJAACAgAAAgEAAAAAAAAECQ=</HashCode>
+      <HashCode>gAUAEEAMAgAAAwEAAAAAIJAACAggAAgEAAAAAAAAECQ=</HashCode>
       <FileName>Game1.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -133,9 +133,9 @@
     </TypeIdentifier>
   </Struct>
   <Struct Name="OneMoreStepToLoveYou.GameInterface.dialouge">
-    <Position X="18.25" Y="15.25" Width="2" />
+    <Position X="18.25" Y="17.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAkAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAkAAEAAAAAAAAAAAAAEA=</HashCode>
       <FileName>GameInterface\I_dialouge.cs</FileName>
     </TypeIdentifier>
   </Struct>

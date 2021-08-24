@@ -54,10 +54,12 @@
     <Compile Include="Entites\text.cs" />
     <Compile Include="Entites\yaDov.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="GameInterface\I_bgGame.cs" />
     <Compile Include="GameInterface\I_dialouge.cs" />
     <Compile Include="GameInterface\I_gameInterface.cs" />
     <Compile Include="GameInterface\I_gridBox.cs" />
     <Compile Include="GameInterface\I_sceneManager.cs" />
+    <Compile Include="GameInterface\I_titleScene.cs" />
     <Compile Include="kaninKitRail.cs" />
     <Compile Include="keyboard.cs" />
     <Compile Include="Program.cs" />

@@ -40,7 +40,7 @@ namespace OneMoreStepToLoveYou.Entites
                     else
                         position = Matrix.CreateTranslation(
                           (1920 / 2) * -1,
-                          -(gameManager.GRID_STARTPOSITION.Y + gameManager.GRID_HEIGHT * gridLimit) - (target.gameSprite.Height / 2) - 15,
+                          -(gameManager.GRID_STARTPOSITION.Y + gameManager.GRID_HEIGHT * gridLimit) - (target.gameSprite.Height / 2),
                           0);
                 }
                 else if (gameManager.M_PLAYER.m_gridPosition.row >= gameManager.GRID_ROW - gridLimit)
