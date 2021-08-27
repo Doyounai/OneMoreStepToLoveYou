@@ -45,7 +45,7 @@ namespace OneMoreStepToLoveYou.GameInterface
             //test box
             Color colorA = new Color(51, 122, 184) * 0;
             Color colorB = new Color(42, 183, 155) * 0;
-            int strokSize = 8;
+            int strokSize = 5;
             Texture2D[] originGridItem = new Texture2D[2];
             /*
             Texture2D rect1 = new Texture2D(graphics.GraphicsDevice, gameManager.GRID_WIDTH, gameManager.GRID_HEIGHT);

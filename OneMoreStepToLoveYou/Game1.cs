@@ -68,8 +68,8 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
-            //titleLoad();
-            scene_LV6();
+            titleLoad();
+            //scene_LV6();
 
             // TODO: use this.Content to load your game content here
         }
