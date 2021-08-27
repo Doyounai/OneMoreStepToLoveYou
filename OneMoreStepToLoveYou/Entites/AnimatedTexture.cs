@@ -19,7 +19,7 @@ namespace OneMoreStepToLoveYou.Entites
     public class AnimatedTexture
     {
         private int framecount;
-        private Texture2D myTexture;
+        public Texture2D myTexture;
         private float TimePerFrame;
         private int Frame;
         private int framerow = 1; // frame row

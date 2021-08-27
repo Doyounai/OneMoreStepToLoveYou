@@ -12,6 +12,7 @@ namespace OneMoreStepToLoveYou.GameInterface
     {
         public List<I_gameInterface> entites = new List<I_gameInterface>();
         List<I_gameInterface> entitesRemove = new List<I_gameInterface>();
+        List<I_gameInterface> entitesAdd = new List<I_gameInterface>();
 
         public void Update(float animator_elapsed)
         {
@@ -28,7 +29,13 @@ namespace OneMoreStepToLoveYou.GameInterface
                 entites.Remove(item);
             }
 
+            foreach (I_gameInterface item in entitesAdd)
+            {
+                entites.Add(item);
+            }
+
             entitesRemove.Clear();
+            entitesAdd.Clear();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -42,6 +49,12 @@ namespace OneMoreStepToLoveYou.GameInterface
         public void Remove(I_gameInterface remover)
         {
             entitesRemove.Add(remover);
+        }
+
+        public void Add(I_gameInterface adder, int drawOrder)
+        {
+            entitesAdd.Add(adder);
+            entitesAdd[entitesAdd.Count - 1].DrawOrder = drawOrder;
         }
     }
 }

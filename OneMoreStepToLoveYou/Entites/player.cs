@@ -73,6 +73,9 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.up].getNextGridType(gameManager.crowds[m_gridPosition.up].m_gridPosition.up) == gridType.Walkable
                 )
             {
+                //particle
+                //Game1.scene.Add(new particle(gameManager.crowds[m_gridPosition.up].sprite.position, 1, "impactDust", 5, 1, 18), 5);
+                Game1.scene.Add(new particle(kaninKitRail.convertGridPosToVectorPos(m_gridPosition.up), 1.5f, "impactDust", 5, 1, 13), 5);
                 //crowd move
                 gameManager.crowds[m_gridPosition.up].originPath.Add(m_gridPosition.up);
                 gameManager.crowds[m_gridPosition.up].m_moveStep = gameManager.playerStep;

@@ -47,6 +47,7 @@
     <Compile Include="Entites\crowd.cs" />
     <Compile Include="Entites\gameManager.cs" />
     <Compile Include="Entites\gridItem.cs" />
+    <Compile Include="Entites\particle.cs" />
     <Compile Include="Entites\pEarth.cs" />
     <Compile Include="Entites\player.cs" />
     <Compile Include="Entites\playerCamera.cs" />

@@ -43,7 +43,7 @@ namespace OneMoreStepToLoveYou
             //graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 100;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             this.IsMouseVisible = true;
             graphics.ApplyChanges();
             base.Initialize();
@@ -53,6 +53,8 @@ namespace OneMoreStepToLoveYou
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            gameManager.content = Content;
 
             //camera
             camera = new playerCamera();
@@ -68,8 +70,8 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
-            titleLoad();
-            //scene_LV6();
+            //titleLoad();
+            scene_LV1();
 
             // TODO: use this.Content to load your game content here
         }

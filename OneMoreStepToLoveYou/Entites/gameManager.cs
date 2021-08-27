@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using OneMoreStepToLoveYou.GameInterface;
 
@@ -60,6 +61,7 @@ namespace OneMoreStepToLoveYou.Entites
     public static class gameManager
     {
         public static bool is_PAUSE = false;
+        public static ContentManager content;
 
         //grid
         public static Dictionary<gridPosition, crowd> crowds = new Dictionary<gridPosition, crowd>();
