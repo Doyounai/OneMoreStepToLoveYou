@@ -9,6 +9,13 @@ using OneMoreStepToLoveYou.GameInterface;
 
 namespace OneMoreStepToLoveYou.Entites
 {
+    public enum crowdType
+    {
+        normal,
+        slow,
+        fast
+    }
+
     public class crowd : character, I_gameInterface
     {
         public int DrawOrder { get; set; }
@@ -17,18 +24,35 @@ namespace OneMoreStepToLoveYou.Entites
         private int crowdMoveStep = 3;
         public List<gridPosition> originPath = new List<gridPosition>();
 
-        public int setMoveStep
-        {
-            set
-            {
-                crowdMoveStep = value;
-            }
-        }
-
         public crowd(Texture2D texture, gridPosition gridPos)
         {
             this.type = gridType.Crowd;
             sprite = new Sprite(texture, Vector2.Zero, Color.White);
+            m_gridPosition = gridPos;
+            gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].type = gridType.Crowd;
+            sprite.position = gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].getCenterGridPosition;
+            sprite.position -= kaninKitRail.getCenterPoint(sprite.gameSprite.Width, sprite.gameSprite.Height);
+
+            gameManager.crowds.Add(m_gridPosition, this);
+        }
+
+        public crowd(Texture2D texture, gridPosition gridPos, crowdType type)
+        {
+            Color color = Color.White;
+
+            if(type == crowdType.fast)
+            {
+                color = Color.Red;
+                this.crowdMoveStep = 1;
+            }
+            else if(type == crowdType.slow)
+            {
+                color = Color.Green;
+                this.crowdMoveStep = 5;
+            }
+
+            this.type = gridType.Crowd;
+            sprite = new Sprite(texture, Vector2.Zero, color);
             m_gridPosition = gridPos;
             gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].type = gridType.Crowd;
             sprite.position = gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].getCenterGridPosition;

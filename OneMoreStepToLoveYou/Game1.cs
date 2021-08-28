@@ -235,9 +235,9 @@ namespace OneMoreStepToLoveYou
             scene.entites[1].DrawOrder = 2;
 
             //crowd
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 1)));
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 1), crowdType.fast));
             scene.entites[2].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 5)));
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 5), crowdType.slow));
             scene.entites[3].DrawOrder = 3;
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 1)));
             scene.entites[4].DrawOrder = 3;
