@@ -17,6 +17,14 @@ namespace OneMoreStepToLoveYou.Entites
         private int crowdMoveStep = 3;
         public List<gridPosition> originPath = new List<gridPosition>();
 
+        public int setMoveStep
+        {
+            set
+            {
+                crowdMoveStep = value;
+            }
+        }
+
         public crowd(Texture2D texture, gridPosition gridPos)
         {
             this.type = gridType.Crowd;
@@ -28,7 +36,6 @@ namespace OneMoreStepToLoveYou.Entites
 
             gameManager.crowds.Add(m_gridPosition, this);
         }
-
         public void Update(float animator_elapsed)
         {
             if (gameManager.is_PAUSE)
