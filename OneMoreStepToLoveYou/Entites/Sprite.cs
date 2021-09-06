@@ -22,14 +22,6 @@ namespace OneMoreStepToLoveYou.Entites
             }
         }
 
-        public Rectangle spriteBox
-        {
-            get
-            {
-                return new Rectangle((int)position.X, (int)position.Y, gameSprite.Width, gameSprite.Height);
-            }
-        }
-
         public Sprite(Texture2D gameSprite, Vector2 position, Color tintColor)
         {
             this.gameSprite = gameSprite;

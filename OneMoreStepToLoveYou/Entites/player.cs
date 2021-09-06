@@ -64,6 +64,11 @@ namespace OneMoreStepToLoveYou.Entites
 
         }
 
+        private void hitParticle(gridPosition pos)
+        {
+            Game1.scene.Add(new particle(kaninKitRail.convertGridPosToVectorPos(pos), 1.5f, "impactDust", 5, 1, 19), 5);
+        }
+
         private void keyUp()
         {
             if (!gameManager.crowds.ContainsKey(m_gridPosition.up))
@@ -74,8 +79,8 @@ namespace OneMoreStepToLoveYou.Entites
                 )
             {
                 //particle
-                //Game1.scene.Add(new particle(gameManager.crowds[m_gridPosition.up].sprite.position, 1, "impactDust", 5, 1, 18), 5);
-                Game1.scene.Add(new particle(kaninKitRail.convertGridPosToVectorPos(m_gridPosition.up), 1.5f, "impactDust", 5, 1, 13), 5);
+                //Game1.scene.Add(new particle(kaninKitRail.convertGridPosToVectorPos(m_gridPosition.up), 1.5f, "impactDust", 5, 1, 13), 5);
+                hitParticle(m_gridPosition.up);
                 //crowd move
                 gameManager.crowds[m_gridPosition.up].originPath.Add(m_gridPosition.up);
                 gameManager.crowds[m_gridPosition.up].m_moveStep = gameManager.playerStep;
@@ -91,6 +96,8 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.up.up].getNextGridType(m_gridPosition.up.up.up) == gridType.Walkable
                 )
             {
+                //particle
+                hitParticle(m_gridPosition.up);
                 //crowd2
                 gameManager.crowds[m_gridPosition.up.up].originPath.Add(m_gridPosition.up.up);
                 gameManager.crowds[m_gridPosition.up.up].m_moveStep = gameManager.playerStep;
@@ -113,6 +120,8 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.down].getNextGridType(gameManager.crowds[m_gridPosition.down].m_gridPosition.down) == gridType.Walkable
                 )
             {
+                //particle
+                hitParticle(m_gridPosition.down);
                 //crowd move
                 gameManager.crowds[m_gridPosition.down].originPath.Add(m_gridPosition.down);
                 gameManager.crowds[m_gridPosition.down].m_moveStep = gameManager.playerStep;
@@ -128,6 +137,8 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.down.down].getNextGridType(m_gridPosition.down.down.down) == gridType.Walkable
                 )
             {
+                //particle
+                hitParticle(m_gridPosition.down);
                 //crowd2
                 gameManager.crowds[m_gridPosition.down.down].originPath.Add(m_gridPosition.down.down);
                 gameManager.crowds[m_gridPosition.down.down].m_moveStep = gameManager.playerStep;
@@ -150,6 +161,8 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.left].getNextGridType(gameManager.crowds[m_gridPosition.left].m_gridPosition.left) == gridType.Walkable
                 )
             {
+                //particle
+                hitParticle(m_gridPosition.left);
                 //crowd move
                 gameManager.crowds[m_gridPosition.left].originPath.Add(m_gridPosition.left);
                 gameManager.crowds[m_gridPosition.left].m_moveStep = gameManager.playerStep;
@@ -165,6 +178,8 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.left.left].getNextGridType(m_gridPosition.left.left.left) == gridType.Walkable
                 )
             {
+                //particle
+                hitParticle(m_gridPosition.left);
                 //crowd2
                 gameManager.crowds[m_gridPosition.left.left].originPath.Add(m_gridPosition.left.left);
                 gameManager.crowds[m_gridPosition.left.left].m_moveStep = gameManager.playerStep;
@@ -187,6 +202,8 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.right].getNextGridType(gameManager.crowds[m_gridPosition.right].m_gridPosition.right) == gridType.Walkable
                 )
             {
+                //particle
+                hitParticle(m_gridPosition.right);
                 //crowd move
                 gameManager.crowds[m_gridPosition.right].originPath.Add(m_gridPosition.right);
                 gameManager.crowds[m_gridPosition.right].m_moveStep = gameManager.playerStep;
@@ -202,6 +219,8 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.right.right].getNextGridType(m_gridPosition.right.right.right) == gridType.Walkable
                 )
             {
+                //particle
+                hitParticle(m_gridPosition.right);
                 //crowd2
                 gameManager.crowds[m_gridPosition.right.right].originPath.Add(m_gridPosition.right.right);
                 gameManager.crowds[m_gridPosition.right.right].m_moveStep = gameManager.playerStep;

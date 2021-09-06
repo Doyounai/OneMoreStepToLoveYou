@@ -13,7 +13,7 @@ namespace OneMoreStepToLoveYou.GameInterface
     {
         public int DrawOrder { get; set; }
         private text[,] debugText;
-        private bool is_Debug = false;
+        private bool is_Debug = true;
 
         public I_gridBox(int row, int column, int startRow, int startColumn, SpriteFont font, GraphicsDeviceManager graphics)
         {

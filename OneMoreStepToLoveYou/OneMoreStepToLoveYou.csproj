@@ -45,12 +45,15 @@
     <Compile Include="Entites\button.cs" />
     <Compile Include="Entites\character.cs" />
     <Compile Include="Entites\crowd.cs" />
+    <Compile Include="Entites\crowdRacing.cs" />
     <Compile Include="Entites\gameManager.cs" />
     <Compile Include="Entites\gridItem.cs" />
     <Compile Include="Entites\particle.cs" />
     <Compile Include="Entites\pEarth.cs" />
     <Compile Include="Entites\player.cs" />
     <Compile Include="Entites\playerCamera.cs" />
+    <Compile Include="Entites\playerRacing.cs" />
+    <Compile Include="Entites\racingManager.cs" />
     <Compile Include="Entites\Sprite.cs" />
     <Compile Include="Entites\text.cs" />
     <Compile Include="Entites\yaDov.cs" />

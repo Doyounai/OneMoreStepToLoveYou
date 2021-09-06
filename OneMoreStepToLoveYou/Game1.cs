@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using OneMoreStepToLoveYou.GameInterface;
 using OneMoreStepToLoveYou.Entites;
+using System;
 
 namespace OneMoreStepToLoveYou
 {
@@ -71,7 +72,7 @@ namespace OneMoreStepToLoveYou
 
             //in game entites
             //titleLoad();
-            scene_LV1();
+            scene_LV2();
 
             // TODO: use this.Content to load your game content here
         }
@@ -180,6 +181,7 @@ namespace OneMoreStepToLoveYou
                     scene_LV2();
                     break;
                 case 3://Level 3
+                    scene_LV3();
                     break;
                 case 4://Level 4
                     scene_LV4();
@@ -235,9 +237,9 @@ namespace OneMoreStepToLoveYou
             scene.entites[1].DrawOrder = 2;
 
             //crowd
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 1), crowdType.fast));
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 1)));
             scene.entites[2].DrawOrder = 3;
-            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 5), crowdType.slow));
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 5)));
             scene.entites[3].DrawOrder = 3;
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 1)));
             scene.entites[4].DrawOrder = 3;
@@ -372,6 +374,21 @@ namespace OneMoreStepToLoveYou
             dialouge.addDialogue(new dialouge("Nong Bao", "e to!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
             dialouge.addDialogue(new dialouge("pEarth", "chut chan nai", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("Nong Bao", "Wago!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+        }
+        private void scene_LV3()
+        {
+            //grid
+            scene.entites.Add(new I_gridBox(8, 3, 1, 6, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites[0].DrawOrder = 1;
+
+            //player
+            scene.entites.Add(new playerRacing(Content.Load<Texture2D>("qq"), new gridPosition(1, 5)));
+            scene.entites[1].DrawOrder = 3;
+
+            //crowd manager
+            scene.entites.Add(new racingManager(Content.Load<Texture2D>("qq")));
+            scene.entites[1].DrawOrder = 0;
+
         }
         private void scene_LV4()
         {
