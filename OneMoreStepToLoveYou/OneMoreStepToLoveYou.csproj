@@ -64,6 +64,7 @@
     <Compile Include="GameInterface\I_gridBox.cs" />
     <Compile Include="GameInterface\I_sceneManager.cs" />
     <Compile Include="GameInterface\I_titleScene.cs" />
+    <Compile Include="GameInterface\starDisplay.cs" />
     <Compile Include="kaninKitRail.cs" />
     <Compile Include="keyboard.cs" />
     <Compile Include="Program.cs" />

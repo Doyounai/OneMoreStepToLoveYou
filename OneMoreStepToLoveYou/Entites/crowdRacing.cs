@@ -30,6 +30,11 @@ namespace OneMoreStepToLoveYou.Entites
                 sprite.position.Y += speed;
             else
                 Game1.scene.Remove(this);
+
+            if(!gameManager.racingGameManager.isBreak && sprite.rec.Intersects(gameManager.racingPlayer.sprite.rec))
+            {
+                gameManager.racingGameManager.เบรครถ();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

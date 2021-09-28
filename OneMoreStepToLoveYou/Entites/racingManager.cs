@@ -29,25 +29,61 @@ namespace OneMoreStepToLoveYou.Entites
         //Random
         public Random rand = new Random();
 
-        //background
-        private List<Texture2D> backgroundTextures = new List<Texture2D>();
-        private List<Sprite> backgrounSprites = new List<Sprite>();
+        //back ground
+        private int topBackgroundIndex;
+        private Sprite[] backgroundSprites = new Sprite[2];
+        List<Texture2D> backgroundTextures = new List<Texture2D>();
+
+        //event hit
+        private float startSpeed;
+        private float breakForce = 5f;
+        private float breakTime = 4f;
+        private float totalBreakTime = 0;
+        public bool isBreak = false;
+
+        float endDestination = 13000f;
+
+        public Texture2D newBackgroundTexture
+        {
+            set
+            {
+                backgroundTextures.Add(value);
+            }
+        }
 
         public racingManager(Texture2D texture)
         {
             this.texture = texture;
             spawnDistance = texture.Height + (spawnOffset * currentSpeed);
+            gameManager.racingGameManager = this;
+
+            startSpeed = currentSpeed;
         }
 
         public void Update(float animator_elapsed)
         {
+            if(currentDistance >= endDestination)
+            {
+                Game1.changeSceneTo(4);
+                return;
+            }
+
             //increase speed;
             totalTime += animator_elapsed;
-            if(totalTime >=  disChangeSpeed)
+            /*if(totalTime >=  disChangeSpeed)
             {
                 currentSpeed += speedIncreaseRate;
                 totalTime = 0;
                 spawnDistance = texture.Height + (spawnOffset * currentSpeed);
+            }*/
+            if(isBreak)
+            {
+                totalBreakTime += animator_elapsed;
+                if(totalBreakTime > breakTime)
+                {
+                    isBreak = false;
+                    currentSpeed = startSpeed;
+                }
             }
 
             //current speed
@@ -61,38 +97,44 @@ namespace OneMoreStepToLoveYou.Entites
             }
 
             //background
-            foreach (Sprite item in backgrounSprites)
+            for (int i = 0; i < 2; i++)
             {
-                item.position.Y += currentSpeed;
+                backgroundSprites[i].position.Y += currentSpeed;
+                if(backgroundSprites[i].position.Y > 1080)
+                {
+                    backgroundSprites[i].position.Y = backgroundSprites[topBackgroundIndex].position.Y - 1080;
+                    backgroundSprites[i].gameSprite = backgroundTextures[rand.Next(0, backgroundTextures.Count - 1)];
+                    topBackgroundIndex = i;
+                    backgroundSprites[i].position.Y += currentSpeed;
+                }
             }
         }
 
         private void spawnCrowd()
         {
-            Game1.scene.Add(new crowdRacing(texture, rand.Next(0, 3), currentSpeed), 3);
+            Game1.scene.Add(new crowdRacing(texture, rand.Next(0, 3), (isBreak) ? startSpeed : currentSpeed), 3);
         }
 
-        public void loadBackgroundTexture(Texture2D texture)
+        public void updateBackgrounds()
         {
-            backgroundTextures.Add(texture);
+            topBackgroundIndex = 1;
+            backgroundSprites[0] = new Sprite(backgroundTextures[rand.Next(0, backgroundTextures.Count - 1)], Vector2.Zero, Color.White);
+            backgroundSprites[1] = new Sprite(backgroundTextures[rand.Next(0, backgroundTextures.Count - 1)], new Vector2(0, -1080), Color.White);
         }
 
-        public void spawnNewBackground()
+        public void เบรครถ()
         {
-            if(backgrounSprites.Count > 0)
-            {
-                backgrounSprites.Add(new Sprite(backgroundTextures[rand.Next(0, backgroundTextures.Count)], Vector2.Zero, Color.White));
-                return;
-            }
-
-            backgrounSprites.Add(new Sprite(backgroundTextures[rand.Next(0, backgroundTextures.Count)], new Vector2(0, backgrounSprites[backgrounSprites.Count - 1].position.Y - 1080), Color.White));
+            currentSpeed -= breakForce;
+            isBreak = true;
+            totalBreakTime = 0;
         }
+
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Sprite item in backgrounSprites)
+            for (int i = 0; i < 2; i++)
             {
-                item.Draw(spriteBatch);
+                backgroundSprites[i].Draw(spriteBatch);
             }
         }
     }

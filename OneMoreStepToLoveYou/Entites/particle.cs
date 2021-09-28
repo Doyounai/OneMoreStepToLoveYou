@@ -27,6 +27,14 @@ namespace OneMoreStepToLoveYou.Entites
                 position = origin;
         }
 
+        public particle(Vector2 origin, float scale, string asset, int frameCount, int frameRow, int framesPerSec, bool t)
+        {
+            m_animator = new AnimatedTexture(Vector2.Zero, 0, scale, 1);
+            m_animator.Load(gameManager.content, asset, frameCount, frameRow, framesPerSec);
+
+            position = origin;
+        }
+
         public void Update(float animator_elapsed)
         {
             m_animator.UpdateFrame(animator_elapsed);

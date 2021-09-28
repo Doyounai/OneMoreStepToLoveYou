@@ -18,7 +18,7 @@ namespace OneMoreStepToLoveYou
         static int sceneToGo;
 
         //transitional
-        public static float transitionSpeed = 0.05f;
+        public static float transitionSpeed = 0.03f;
         float transitionAlpha = 1f;
         Sprite transitionPanel;
         static bool is_fadeOut = true;
@@ -40,8 +40,6 @@ namespace OneMoreStepToLoveYou
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            //graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            //graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - 100;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
             //graphics.IsFullScreen = true;
@@ -71,8 +69,8 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
-            //titleLoad();
-            scene_LV2();
+            titleLoad();
+            //scene_LV1();
 
             // TODO: use this.Content to load your game content here
         }
@@ -99,7 +97,7 @@ namespace OneMoreStepToLoveYou
                 else
                 {
                     is_fadeIn = false;
-                    transitionSpeed = 0.01f;
+                    //transitionSpeed = 0.04f;
                     dialouge = new I_dialouge(graphics, Content.Load<SpriteFont>("dialogueName_Font"), Content.Load<SpriteFont>("dialogueMessege_font"));
                     dialouge.buttonSetup(graphics, Content.Load<SpriteFont>("dialogueNextFont"), 120, 80, 10, new Vector2(1690, 980), "Next", Color.Gray, Color.Black, Color.White, Color.White);
                     resetConfingulation();
@@ -133,7 +131,7 @@ namespace OneMoreStepToLoveYou
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
 
@@ -192,6 +190,12 @@ namespace OneMoreStepToLoveYou
                 case 6://Level 6
                     scene_LV6();
                     break;
+                case 15://star
+                    star_display();
+                    break;
+                case 11://lv1 dialogue
+                    dialogue_Lv1();
+                    break;
                 default:
                     break;
             }
@@ -199,7 +203,7 @@ namespace OneMoreStepToLoveYou
 
         public static void changeSceneTo(int sceneIndex)
         {
-            transitionSpeed = 0.02f;
+            //transitionSpeed = 0.05f;
             sceneToGo = sceneIndex;
             //fade transition panel
             is_fadeIn = true;
@@ -223,6 +227,12 @@ namespace OneMoreStepToLoveYou
         }
         private void scene_LV1()
         {
+            //set star
+            gameManager.currentLevel = 1;
+            gameManager.star_1_step = 25;
+            gameManager.star_2_step = 22;
+            gameManager.star_3_step = 21;
+
             //grid
             scene.entites.Add(new I_gridBox(6, 6, 1, 7, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
@@ -276,7 +286,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[16].DrawOrder = 0;
 
             //dialoge
-            dialouge.sceneToGo = 2;
+            dialouge.sceneToGo = 15;
             dialouge.addDialogue(new dialouge("p'Earth", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
             dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
@@ -284,6 +294,12 @@ namespace OneMoreStepToLoveYou
         }
         private void scene_LV2()
         {
+            //set star
+            gameManager.currentLevel = 2;
+            gameManager.star_1_step = 31;
+            gameManager.star_2_step = 28;
+            gameManager.star_3_step = 27;
+
             //grid
             scene.entites.Add(new I_gridBox(7, 8, 2, 4, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
@@ -361,7 +377,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[24].DrawOrder = 0;
 
             //dialoge
-            dialouge.sceneToGo = 4;
+            dialouge.sceneToGo = 15;
             dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("Nong Bao", "Yellow!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
             dialouge.addDialogue(new dialouge("pEarth", "ma muuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
@@ -379,7 +395,7 @@ namespace OneMoreStepToLoveYou
         {
             //grid
             scene.entites.Add(new I_gridBox(8, 3, 1, 6, Content.Load<SpriteFont>("debugFont"), graphics));
-            scene.entites[0].DrawOrder = 1;
+            scene.entites[0].DrawOrder = 0;
 
             //player
             scene.entites.Add(new playerRacing(Content.Load<Texture2D>("qq"), new gridPosition(1, 5)));
@@ -387,11 +403,21 @@ namespace OneMoreStepToLoveYou
 
             //crowd manager
             scene.entites.Add(new racingManager(Content.Load<Texture2D>("qq")));
-            scene.entites[1].DrawOrder = 0;
-
+            scene.entites[2].DrawOrder = 1;
+            (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type1");
+            (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type2");
+            (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type3");
+            (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type4");
+            (scene.entites[2] as racingManager).updateBackgrounds();
         }
         private void scene_LV4()
         {
+            //set star
+            gameManager.currentLevel = 3;
+            gameManager.star_1_step = 37;
+            gameManager.star_2_step = 35;
+            gameManager.star_3_step = 33;
+
             //grid
             scene.entites.Add(new I_gridBox(7, 8, 2, 4, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
@@ -457,7 +483,7 @@ namespace OneMoreStepToLoveYou
             scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv4")));
             scene.entites[19].DrawOrder = 0;
             //dialoge
-            dialouge.sceneToGo = 6;
+            dialouge.sceneToGo = 15;
             dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("Nong Bao", "Yellow!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
             dialouge.addDialogue(new dialouge("pEarth", "ma muuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
@@ -473,6 +499,12 @@ namespace OneMoreStepToLoveYou
         } 
         private void scene_LV5()
         {
+            //set star
+            gameManager.currentLevel = 4;
+            gameManager.star_1_step = 80;
+            gameManager.star_2_step = 78;
+            gameManager.star_3_step = 76;
+
             //grid
             scene.entites.Add(new I_gridBox(8, 11, 1, 2, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
@@ -565,7 +597,7 @@ namespace OneMoreStepToLoveYou
             scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv5")));
             scene.entites[24].DrawOrder = 0;
             //dialoge
-            dialouge.sceneToGo = 6;
+            dialouge.sceneToGo = 15;
             dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("Nong Bao", "Yellow!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
             dialouge.addDialogue(new dialouge("pEarth", "ma muuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
@@ -581,6 +613,12 @@ namespace OneMoreStepToLoveYou
         }
         private void scene_LV6()
         {
+            //set star
+            gameManager.currentLevel = 5;
+            gameManager.star_1_step = 50;
+            gameManager.star_2_step = 48;
+            gameManager.star_3_step = 46;
+
             //grid
             scene.entites.Add(new I_gridBox(17, 7, 0, 7, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
@@ -714,8 +752,22 @@ namespace OneMoreStepToLoveYou
             //scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv6")));
             //scene.entites[34].DrawOrder = 0;
             //dialoge
-            dialouge.sceneToGo = 0;
+            dialouge.sceneToGo = 15;
             dialouge.addDialogue(new dialouge("pEarth", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
+            dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Content.Load<Texture2D>("nongBao"), 0.5f));
+        }
+        private void star_display()
+        {
+            scene.entites.Add(new starDisplay(Content.Load<Texture2D>("star")));
+        }
+
+        private void dialogue_Lv1()
+        {
+            //dialoge
+            dialouge.sceneToGo = 1;
+            dialouge.addDialogue(new dialouge("พี่โลก", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
             dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
             dialouge.addDialogue(new dialouge("Nong Bao", "Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Content.Load<Texture2D>("nongBao"), 0.5f));

@@ -23,6 +23,8 @@ namespace OneMoreStepToLoveYou.Entites
             m_gridPosition = gridPos;
             sprite.position = gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].getCenterGridPosition;
             sprite.position -= kaninKitRail.getCenterPoint(sprite.gameSprite.Width, sprite.gameSprite.Height);
+
+            gameManager.racingPlayer = this;
         }
 
         public void Update(float animator_elapsed)

@@ -258,9 +258,11 @@ namespace OneMoreStepToLoveYou.Entites
             {
                 if (!is_ssr)
                     return;
-                //transition
+                //transition                
+                gameManager.updateStart();
                 Game1.dialouge.dialogeOn();
                 //Game1.changeSceneTo(2);
+
                 return;
             }
 

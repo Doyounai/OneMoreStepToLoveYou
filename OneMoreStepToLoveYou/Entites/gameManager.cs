@@ -81,6 +81,35 @@ namespace OneMoreStepToLoveYou.Entites
         //pEarth
         public static gridPosition pEarthPosition;
 
+        //star
+        public static int star_1_step = 0;
+        public static int star_2_step = 0;
+        public static int star_3_step = 0;
+        public static int currentLevel;
+        public static int[] levelStar = new int[5]; 
+
+        public static int getCurrentStar { get { return levelStar[currentLevel - 1]; } }
+
+        //racing game
+        public static racingManager racingGameManager;
+        public static playerRacing racingPlayer;
+
+        //star system
+        public static void updateStart()
+        {
+            int star = 3;
+
+            if (playerStep >= star_2_step)
+                star = 2;
+            if (playerStep >= star_1_step)
+                star = 1;
+
+            if (levelStar[currentLevel - 1] < star)
+                levelStar[currentLevel - 1] = star;
+
+            Console.WriteLine(getCurrentStar);
+        }
+
         //call when player move
         public static void playerMove()
         {

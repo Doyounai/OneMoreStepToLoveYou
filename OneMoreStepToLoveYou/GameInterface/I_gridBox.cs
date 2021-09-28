@@ -13,7 +13,7 @@ namespace OneMoreStepToLoveYou.GameInterface
     {
         public int DrawOrder { get; set; }
         private text[,] debugText;
-        private bool is_Debug = true;
+        private bool is_Debug = false;
 
         public I_gridBox(int row, int column, int startRow, int startColumn, SpriteFont font, GraphicsDeviceManager graphics)
         {
@@ -42,61 +42,12 @@ namespace OneMoreStepToLoveYou.GameInterface
             debugText = new text[row, column];
 
             #region genarate test box texture
+
             //test box
             Color colorA = new Color(51, 122, 184) * 0;
             Color colorB = new Color(42, 183, 155) * 0;
             int strokSize = 5;
             Texture2D[] originGridItem = new Texture2D[2];
-            /*
-            Texture2D rect1 = new Texture2D(graphics.GraphicsDevice, gameManager.GRID_WIDTH, gameManager.GRID_HEIGHT);
-            Color[] colorData = new Color[gameManager.GRID_WIDTH * gameManager.GRID_HEIGHT];
-
-            //color A
-            //row
-            for (int i = 0; i < gameManager.GRID_HEIGHT; i++)
-            {
-                //column
-                for (int j = 0; j < gameManager.GRID_WIDTH; j++)
-                {
-                    //boarder
-                    if (i <= strokSize || i >= gameManager.GRID_HEIGHT - strokSize || j <= strokSize || j >= gameManager.GRID_WIDTH - strokSize)
-                    {
-                        colorData[(gameManager.GRID_WIDTH * i) + j] = new Color(255, 255, 255, 1);
-                    }//fill
-                    else
-                    {
-                        colorData[(gameManager.GRID_WIDTH * i) + j] = colorA;
-                    }
-
-                }
-            }
-            rect1.SetData(colorData);
-
-            originGridItem[0] = rect1;
-
-            //Color B
-            Texture2D rect2 = new Texture2D(graphics.GraphicsDevice, gameManager.GRID_WIDTH, gameManager.GRID_HEIGHT);
-            for (int i = 0; i < gameManager.GRID_HEIGHT; i++)
-            {
-                //column
-                for (int j = 0; j < gameManager.GRID_WIDTH; j++)
-                {
-                    //boarder
-                    if (i <= strokSize || i >= gameManager.GRID_HEIGHT - strokSize || j <= strokSize || j >= gameManager.GRID_WIDTH - strokSize)
-                    {
-                        colorData[(gameManager.GRID_WIDTH * i) + j] = new Color(255, 255, 255, 1);
-                    }//fill
-                    else
-                    {
-                        colorData[(gameManager.GRID_WIDTH * i) + j] = colorB;
-                    }
-
-                }
-            }
-            rect2.SetData(colorData);
-
-            originGridItem[1] = rect2;
-            */
             originGridItem[0] = kaninKitRail.getBoxTexture(graphics, gameManager.GRID_WIDTH, gameManager.GRID_HEIGHT, colorA, strokSize);
             originGridItem[1] = kaninKitRail.getBoxTexture(graphics, gameManager.GRID_WIDTH, gameManager.GRID_HEIGHT, colorB, strokSize);
             #endregion
