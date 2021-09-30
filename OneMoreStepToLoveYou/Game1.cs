@@ -69,8 +69,8 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
-            titleLoad();
-            //scene_LV1();
+            //titleLoad();
+            scene_LV1();
 
             // TODO: use this.Content to load your game content here
         }
@@ -760,7 +760,7 @@ namespace OneMoreStepToLoveYou
         }
         private void star_display()
         {
-            scene.entites.Add(new starDisplay(Content.Load<Texture2D>("star")));
+            scene.entites.Add(new starDisplay(Content.Load<Texture2D>("Hearth")));
         }
 
         private void dialogue_Lv1()

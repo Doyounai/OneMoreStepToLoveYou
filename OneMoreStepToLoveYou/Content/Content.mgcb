@@ -44,6 +44,11 @@
 /processorParam:TextureFormat=Compressed
 /build:debugFont.spritefont
 
+#begin dialogue_end_level1.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:dialogue_end_level1.xml
+
 #begin dialogueMessege_font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -64,6 +69,18 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:dialogueNextFont.spritefont
+
+#begin Hearth.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Hearth.png
 
 #begin impactDust.png
 /importer:TextureImporter
@@ -208,18 +225,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:qq.png
-
-#begin star.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:star.png
 
 #begin test.png
 /importer:TextureImporter

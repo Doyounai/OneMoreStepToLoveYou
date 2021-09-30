@@ -14,11 +14,11 @@ namespace OneMoreStepToLoveYou.GameInterface
         public int DrawOrder { get; set; }
         Texture2D star;
 
-        float popupDelay = 0.5f;
+        float popupDelay = 0.6f;
         float totalTime = 0;
 
         int currentStar = 0;
-        float starMargin = 20;
+        float starMargin = 50;
 
         float endDelay = 1f;
         bool is_endDisplay = false;
@@ -37,10 +37,10 @@ namespace OneMoreStepToLoveYou.GameInterface
                 currentStar += 1;
                 totalTime = 0;
                 Vector2 position = new Vector2(1920 / 2 - (star.Width * 3 + starMargin * 2) / 2, (1080 / 2) - (star.Height / 2));
-                position.X += ((currentStar - 1) * star.Width + starMargin * (currentStar - 1)) - ((120 / 2) * 4) + star.Width / 2;
-                position.Y -= ((120 / 20) * 4) + star.Height / 2 - 20;
+                position.X += ((currentStar - 1) * star.Width + starMargin * (currentStar - 1)) - ((120 / 2) * 5) + star.Width / 2;
+                position.Y -= ((120 / 20) * 5) + star.Height / 2 - 20;
                 //position.Y += star.Height / 2;
-                Game1.scene.Add(new particle(position, 4, "impactDust", 5, 1, 16, false), 0);
+                Game1.scene.Add(new particle(position, 5, "impactDust", 5, 1, 16, false), 0);
                 is_endDisplay = true;
             }
 
