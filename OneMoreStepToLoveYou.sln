@@ -5,16 +5,30 @@ VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneMoreStepToLoveYou", "OneMoreStepToLoveYou\OneMoreStepToLoveYou.csproj", "{F6054261-6B6F-4B6F-AD7E-E259B48289B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml_Data", "Xml_Data\Xml_Data.csproj", "{6F6F7F40-4271-4CE6-921F-6B44CC28384C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6054261-6B6F-4B6F-AD7E-E259B48289B7}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{F6054261-6B6F-4B6F-AD7E-E259B48289B7}.Debug|x86.ActiveCfg = Debug|x86
 		{F6054261-6B6F-4B6F-AD7E-E259B48289B7}.Debug|x86.Build.0 = Debug|x86
+		{F6054261-6B6F-4B6F-AD7E-E259B48289B7}.Release|Any CPU.ActiveCfg = Release|x86
 		{F6054261-6B6F-4B6F-AD7E-E259B48289B7}.Release|x86.ActiveCfg = Release|x86
 		{F6054261-6B6F-4B6F-AD7E-E259B48289B7}.Release|x86.Build.0 = Release|x86
+		{6F6F7F40-4271-4CE6-921F-6B44CC28384C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F6F7F40-4271-4CE6-921F-6B44CC28384C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F6F7F40-4271-4CE6-921F-6B44CC28384C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6F6F7F40-4271-4CE6-921F-6B44CC28384C}.Debug|x86.Build.0 = Debug|Any CPU
+		{6F6F7F40-4271-4CE6-921F-6B44CC28384C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F6F7F40-4271-4CE6-921F-6B44CC28384C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F6F7F40-4271-4CE6-921F-6B44CC28384C}.Release|x86.ActiveCfg = Release|Any CPU
+		{6F6F7F40-4271-4CE6-921F-6B44CC28384C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

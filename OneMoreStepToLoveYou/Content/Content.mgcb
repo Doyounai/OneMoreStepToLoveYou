@@ -10,8 +10,26 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\Xml_Data\bin\Debug\Xml_Data.dll
 
 #---------------------------------- Content ---------------------------------#
+
+#begin B_S1.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:B_S1.xml
+
+#begin B_S1_image.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:B_S1_image.jpg
 
 #begin Cloud_sprite.png
 /importer:TextureImporter

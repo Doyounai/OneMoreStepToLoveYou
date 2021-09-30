@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using OneMoreStepToLoveYou.Entites;
 
@@ -37,7 +38,7 @@ namespace OneMoreStepToLoveYou.GameInterface
         private bool is_play;
 
         private float transitionSpeed = 0.05f;
-        private float MAX_BG_midderAlpha = 0.9f;
+        public float MAX_BG_midderAlpha = 0.9f;
         private float upperDestinationY = -340f;
         private float lowerDestinationY = 750f;
         private float transitionMovingSpeed = 15;
@@ -69,6 +70,16 @@ namespace OneMoreStepToLoveYou.GameInterface
         public void addDialogue(dialouge newDialouge)
         {
             dialogues.Add(newDialouge);
+        }
+
+        public void addDialogue(string scene, ContentManager content)
+        {
+            Xml_Data.dialoguesData data = content.Load<Xml_Data.dialoguesData>(scene);
+
+            foreach (Xml_Data.diaglogueInfo item in data.dialogueInfos)
+            {
+                addDialogue(new dialouge(item.name, item.messege, content.Load<Texture2D>(item.imageName), item.imageScale));
+            }
         }
 
         public I_dialouge(GraphicsDeviceManager graphics, SpriteFont nameFont, SpriteFont messegeFont)

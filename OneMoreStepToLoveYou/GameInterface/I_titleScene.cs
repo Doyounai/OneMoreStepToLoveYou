@@ -16,7 +16,7 @@ namespace OneMoreStepToLoveYou.GameInterface
         private button startButton;
         private button exit;
 
-        private static int start_lv = 1;
+        private static int start_lv = 11;
 
         public Sprite bg;
 

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="Xml_Data.dialoguesData">
+	<dialogueInfos>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>คือลื้อ</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>pEarth</name>
+			<messege>rasengan!!!!!</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>Nong Bao</name>
+			<messege>NANIIII!!</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>Nong Bao</name>
+			<messege>Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+	</dialogueInfos>
+  </Asset>
+</XnaContent>

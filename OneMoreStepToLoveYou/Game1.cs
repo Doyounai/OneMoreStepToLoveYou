@@ -69,8 +69,8 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
-            //titleLoad();
-            scene_LV1();
+            titleLoad();
+            //scene_LV1();
 
             // TODO: use this.Content to load your game content here
         }
@@ -762,15 +762,19 @@ namespace OneMoreStepToLoveYou
         {
             scene.entites.Add(new starDisplay(Content.Load<Texture2D>("Hearth")));
         }
-
         private void dialogue_Lv1()
         {
             //dialoge
             dialouge.sceneToGo = 1;
-            dialouge.addDialogue(new dialouge("พี่โลก", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
+            /*dialouge.addDialogue(new dialouge("พี่โลก", "คือลื้อ", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
             dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
             dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue(new dialouge("Nong Bao", "Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Content.Load<Texture2D>("nongBao"), 0.5f));*/
+            dialouge.addDialogue("B_S1", Content);
+            dialouge.MAX_BG_midderAlpha = 0.7f;
+
+            //scene
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
         }
     }
 }
