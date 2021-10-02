@@ -105,6 +105,7 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         public void Update(float animator_elapsed)
         {
+            keyboard.GetState();
             if(is_play)
             {
                 //fade
@@ -140,6 +141,8 @@ namespace OneMoreStepToLoveYou.GameInterface
                 }
 
                 m_button.Update();
+                if (keyboard.HasBeenPressed(Microsoft.Xna.Framework.Input.Keys.Space))
+                    nextDialogue();
             }
         }
 
@@ -166,6 +169,22 @@ namespace OneMoreStepToLoveYou.GameInterface
             characterSprite.position.Y -= 150;
 
             name = dialogues[currentDialouge].name;
+        }
+
+        public void nextDialogue()
+        {
+            //end
+            if (currentDialouge >= dialogues.Count - 1)
+            {
+                Game1.changeSceneTo(sceneToGo);
+                return;
+            }
+
+            characterAlpha = 0;
+            currentDialouge += 1;
+            messege = "";
+            currentMessege = -1;
+            updateDialogue();
         }
 
         public void nextDialogue(object sender, System.EventArgs e)

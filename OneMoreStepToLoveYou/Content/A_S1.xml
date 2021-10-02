@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="Xml_Data.dialoguesData">
+	<dialogueInfos>
+		<Item>
+			<name>Nong Bao</name>
+			<messege>รุ่นพี่ค่ะ!!</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>Nong Bao</name>
+			<messege>* หน้าตกใจ* เอ๋ หายไปเฉยเลย!!</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+	</dialogueInfos>
+  </Asset>
+</XnaContent>

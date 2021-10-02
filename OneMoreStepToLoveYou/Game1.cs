@@ -69,8 +69,9 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
-            titleLoad();
+            //titleLoad();
             //scene_LV1();
+            dialogue_Lv1();
 
             // TODO: use this.Content to load your game content here
         }
@@ -196,6 +197,9 @@ namespace OneMoreStepToLoveYou
                 case 11://lv1 dialogue
                     dialogue_Lv1();
                     break;
+                case 22://lv2 dialogue
+                    dialogue_Lv2();
+                    break;
                 default:
                     break;
             }
@@ -232,6 +236,7 @@ namespace OneMoreStepToLoveYou
             gameManager.star_1_step = 25;
             gameManager.star_2_step = 22;
             gameManager.star_3_step = 21;
+            gameManager.sceneNumbrtToGO = 22;
 
             //grid
             scene.entites.Add(new I_gridBox(6, 6, 1, 7, Content.Load<SpriteFont>("debugFont"), graphics));
@@ -287,10 +292,7 @@ namespace OneMoreStepToLoveYou
 
             //dialoge
             dialouge.sceneToGo = 15;
-            dialouge.addDialogue(new dialouge("p'Earth", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue("A_S1", Content);
         }
         private void scene_LV2()
         {
@@ -766,11 +768,17 @@ namespace OneMoreStepToLoveYou
         {
             //dialoge
             dialouge.sceneToGo = 1;
-            /*dialouge.addDialogue(new dialouge("พี่โลก", "คือลื้อ", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Content.Load<Texture2D>("nongBao"), 0.5f));*/
             dialouge.addDialogue("B_S1", Content);
+            dialouge.MAX_BG_midderAlpha = 0.7f;
+
+            //scene
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+        }
+        private void dialogue_Lv2()
+        {
+            //dialoge
+            dialouge.sceneToGo = 2;
+            dialouge.addDialogue("B_S2", Content);
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene

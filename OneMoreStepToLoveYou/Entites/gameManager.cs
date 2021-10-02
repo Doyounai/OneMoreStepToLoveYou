@@ -86,7 +86,8 @@ namespace OneMoreStepToLoveYou.Entites
         public static int star_2_step = 0;
         public static int star_3_step = 0;
         public static int currentLevel;
-        public static int[] levelStar = new int[5]; 
+        public static int[] levelStar = new int[5];
+        public static int sceneNumbrtToGO;
 
         public static int getCurrentStar { get { return levelStar[currentLevel - 1]; } }
 

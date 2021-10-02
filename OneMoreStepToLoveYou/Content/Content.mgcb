@@ -14,6 +14,11 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin A_S1.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:A_S1.xml
+
 #begin B_S1.xml
 /importer:XmlImporter
 /processor:PassThroughProcessor
@@ -30,6 +35,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:B_S1_image.jpg
+
+#begin B_S2.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:B_S2.xml
 
 #begin Cloud_sprite.png
 /importer:TextureImporter

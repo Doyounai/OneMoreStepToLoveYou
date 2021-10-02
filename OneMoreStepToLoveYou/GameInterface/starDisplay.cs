@@ -46,12 +46,13 @@ namespace OneMoreStepToLoveYou.GameInterface
 
             if(is_endDisplay && totalTime >= endDelay)
             {
-                if (gameManager.currentLevel < 3)
+                /*if (gameManager.currentLevel < 3)
                     Game1.changeSceneTo(gameManager.currentLevel + 1);
                 else if (gameManager.currentLevel >= 3 && gameManager.currentLevel <= 4)
                     Game1.changeSceneTo(gameManager.currentLevel + 2);
                 else
-                    Game1.changeSceneTo(0);
+                    Game1.changeSceneTo(0);*/
+                Game1.changeSceneTo(gameManager.sceneNumbrtToGO);
             }
         }
 
