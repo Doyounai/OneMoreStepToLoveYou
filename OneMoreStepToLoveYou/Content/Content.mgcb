@@ -19,6 +19,31 @@
 /processor:PassThroughProcessor
 /build:A_S1.xml
 
+#begin A_S2.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:A_S2.xml
+
+#begin A_S3.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:A_S3.xml
+
+#begin A_S4.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:A_S4.xml
+
+#begin A_S5.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:A_S5.xml
+
+#begin A_S6.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:A_S6.xml
+
 #begin B_S1.xml
 /importer:XmlImporter
 /processor:PassThroughProcessor
@@ -41,17 +66,25 @@
 /processor:PassThroughProcessor
 /build:B_S2.xml
 
-#begin Cloud_sprite.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Cloud_sprite.png
+#begin B_S3.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:B_S3.xml
+
+#begin B_S4.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:B_S4.xml
+
+#begin B_S5.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:B_S5.xml
+
+#begin B_S6.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:B_S6.xml
 
 #begin CoketumpBreathe.png
 /importer:TextureImporter
@@ -253,6 +286,31 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:qq.png
+
+#begin shadowArea_s1.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:shadowArea_s1.xml
+
+#begin shadowArea_s2.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:shadowArea_s2.xml
+
+#begin shadowArea_s4.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:shadowArea_s4.xml
+
+#begin shadowArea_s5.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:shadowArea_s5.xml
+
+#begin shadowArea_s6.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:shadowArea_s6.xml
 
 #begin test.png
 /importer:TextureImporter

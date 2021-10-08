@@ -38,7 +38,15 @@ namespace OneMoreStepToLoveYou.Entites
             updatePosition();
             if (is_move && Vector2.Distance(sprite.position, targetPosition) > 5f)
                 return;
-                
+            
+            //cheat
+            if(keyboard.HasBeenPressed(Keys.Space))
+            {
+                gameManager.updateStart();
+                Game1.dialouge.dialogeOn();
+            }
+
+
             //move left
             if (keyboard.HasBeenPressed(Keys.A) || keyboard.HasBeenPressed(Keys.Left))
             {

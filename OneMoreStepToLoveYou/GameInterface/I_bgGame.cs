@@ -16,14 +16,10 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         public I_bgGame(Texture2D bg)
         {
-            Vector2 pos = new Vector2(0, 0);
-            pos.Y -= gameManager.GRID_HEIGHT * gameManager.GRID_ROW - ((gameManager.GRID_HEIGHT * gameManager.GRID_ROW) % 1080);
-
-
             if (1080 > gameManager.GRID_HEIGHT * gameManager.GRID_ROW)
                 sprite = new Sprite(bg, Vector2.Zero, Color.White);
             else
-                sprite = new Sprite(bg, pos, Color.White);
+                sprite = new Sprite(bg, new Vector2(0, -960), Color.White);
         }
 
         public void Update(float animator_elapsed)

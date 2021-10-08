@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="Xml_Data.levelUnwalkableArea">
+	<unwalkableAreas>
+		<Item>
+			<x>0</x>
+			<y>1</y>
+		</Item>
+		<Item>
+			<x>0</x>
+			<y>2</y>
+		</Item>
+		<Item>
+			<x>0</x>
+			<y>3</y>
+		</Item>
+		<Item>
+			<x>0</x>
+			<y>4</y>
+		</Item>
+		<Item>
+			<x>0</x>
+			<y>5</y>
+		</Item>
+	</unwalkableAreas>
+  </Asset>
+</XnaContent>

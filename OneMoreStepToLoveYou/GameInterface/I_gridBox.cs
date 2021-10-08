@@ -35,7 +35,7 @@ namespace OneMoreStepToLoveYou.GameInterface
                 //gameManager.GRID_STARTPOSITION -= kaninKitRail.getCenterPoint(column * gameManager.GRID_WIDTH, row * gameManager.GRID_HEIGHT);
                 //gameManager.GRID_STARTPOSITION.Y -= (gameManager.GRID_HEIGHT * row) - graphics.PreferredBackBufferHeight;
                 int sceneUperOver = (row * gameManager.GRID_HEIGHT) - ((row * gameManager.GRID_HEIGHT) % 1080);
-                gameManager.GRID_STARTPOSITION = new Vector2(startColumn * gameManager.GRID_WIDTH, -sceneUperOver);
+                gameManager.GRID_STARTPOSITION = new Vector2(startColumn * gameManager.GRID_WIDTH, -960);
                 Game1.is_CameraOn = true;
             }
             gameManager.GRID_DATA = new gridItem[row, column];

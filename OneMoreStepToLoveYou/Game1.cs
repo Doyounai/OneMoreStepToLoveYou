@@ -70,8 +70,8 @@ namespace OneMoreStepToLoveYou
 
             //in game entites
             //titleLoad();
-            //scene_LV1();
-            dialogue_Lv1();
+            scene_LV6();
+            //dialogue_Lv1();
 
             // TODO: use this.Content to load your game content here
         }
@@ -200,6 +200,18 @@ namespace OneMoreStepToLoveYou
                 case 22://lv2 dialogue
                     dialogue_Lv2();
                     break;
+                case 33://lv3 dialogue
+                    dialogue_Lv3();
+                    break;
+                case 44://lv4 dialogue
+                    dialogue_Lv4();
+                    break;
+                case 55://lv5 dialogue
+                    dialogue_Lv5();
+                    break;
+                case 66://lv4 dialogue
+                    dialogue_Lv6();
+                    break;
                 default:
                     break;
             }
@@ -241,11 +253,11 @@ namespace OneMoreStepToLoveYou
             //grid
             scene.entites.Add(new I_gridBox(6, 6, 1, 7, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
-            gameManager.addShadowArea(0, 1);
-            gameManager.addShadowArea(0, 2);
-            gameManager.addShadowArea(0, 3);
-            gameManager.addShadowArea(0, 4);
-            gameManager.addShadowArea(0, 5);
+            Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s1");
+            for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
+            {
+                gameManager.addShadowArea(shadowArea.unwalkableAreas[i].x, shadowArea.unwalkableAreas[i].y);
+            }
 
             //player
             scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(1, 4)));
@@ -301,23 +313,16 @@ namespace OneMoreStepToLoveYou
             gameManager.star_1_step = 31;
             gameManager.star_2_step = 28;
             gameManager.star_3_step = 27;
+            gameManager.sceneNumbrtToGO = 33;
 
             //grid
             scene.entites.Add(new I_gridBox(7, 8, 2, 4, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
-            gameManager.addShadowArea(0, 4);
-            gameManager.addShadowArea(0, 6);
-            gameManager.addShadowArea(1, 0);
-            gameManager.addShadowArea(2, 0);
-            gameManager.addShadowArea(5, 0);
-            gameManager.addShadowArea(3, 0);
-            gameManager.addShadowArea(4, 0);
-            gameManager.addShadowArea(6, 0);
-            gameManager.addShadowArea(7, 2);
-            gameManager.addShadowArea(7, 3);
-            gameManager.addShadowArea(7, 4);
-            gameManager.addShadowArea(7, 5);
-            gameManager.addShadowArea(7, 6);
+            Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s2");
+            for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
+            {
+                gameManager.addShadowArea(shadowArea.unwalkableAreas[i].x, shadowArea.unwalkableAreas[i].y);
+            }
 
             //player
             scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(0, 0)));
@@ -380,18 +385,7 @@ namespace OneMoreStepToLoveYou
 
             //dialoge
             dialouge.sceneToGo = 15;
-            dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Yellow!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "ma muuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Mango!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "rot gra ba", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Vego!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "fai chaek", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "zippo!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "meet", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "e to!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "chut chan nai", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Wago!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue("A_S2", Content);
         }
         private void scene_LV3()
         {
@@ -411,6 +405,10 @@ namespace OneMoreStepToLoveYou
             (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type3");
             (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type4");
             (scene.entites[2] as racingManager).updateBackgrounds();
+
+            //dialoge
+            dialouge.sceneToGo = 44;
+            dialouge.addDialogue("A_S3", Content);
         }
         private void scene_LV4()
         {
@@ -419,24 +417,16 @@ namespace OneMoreStepToLoveYou
             gameManager.star_1_step = 37;
             gameManager.star_2_step = 35;
             gameManager.star_3_step = 33;
+            gameManager.sceneNumbrtToGO = 55;
 
             //grid
             scene.entites.Add(new I_gridBox(7, 8, 2, 4, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
-            gameManager.addShadowArea(0, 3);
-            gameManager.addShadowArea(1, 2);
-            gameManager.addShadowArea(1, 3);
-            gameManager.addShadowArea(0, 4);
-            gameManager.addShadowArea(1, 4);
-            gameManager.addShadowArea(2, 2);
-            gameManager.addShadowArea(3, 0);
-            gameManager.addShadowArea(3, 2);
-            gameManager.addShadowArea(4, 2);
-            gameManager.addShadowArea(4, 3);
-            gameManager.addShadowArea(4, 4);
-            gameManager.addShadowArea(5, 4);
-            gameManager.addShadowArea(7, 4);
-            gameManager.addShadowArea(7, 5);
+            Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s4");
+            for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
+            {
+                gameManager.addShadowArea(shadowArea.unwalkableAreas[i].x, shadowArea.unwalkableAreas[i].y);
+            }
 
             //player
             scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(0, 5)));
@@ -486,18 +476,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[19].DrawOrder = 0;
             //dialoge
             dialouge.sceneToGo = 15;
-            dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Yellow!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "ma muuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Mango!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "rot gra ba", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Vego!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "fai chaek", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "zippo!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "meet", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "e to!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "chut chan nai", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Wago!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue("A_S4", Content);
         } 
         private void scene_LV5()
         {
@@ -506,40 +485,17 @@ namespace OneMoreStepToLoveYou
             gameManager.star_1_step = 80;
             gameManager.star_2_step = 78;
             gameManager.star_3_step = 76;
+            gameManager.sceneNumbrtToGO = 66;
 
             //grid
             scene.entites.Add(new I_gridBox(8, 11, 1, 2, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
-            gameManager.addShadowArea(1, 6);
-            gameManager.addShadowArea(2, 6);
-            gameManager.addShadowArea(3, 6);
-            gameManager.addShadowArea(4, 6);
-            gameManager.addShadowArea(5, 6);
-            gameManager.addShadowArea(6, 6);
-            gameManager.addShadowArea(7, 6);
-            gameManager.addShadowArea(8, 6);
-            gameManager.addShadowArea(1, 3);
-            gameManager.addShadowArea(2, 3);
-            gameManager.addShadowArea(3, 3);
-            gameManager.addShadowArea(4, 3);
-            gameManager.addShadowArea(5, 3);
-            gameManager.addShadowArea(6, 3);
-            gameManager.addShadowArea(7, 3);
-            gameManager.addShadowArea(8, 3);
-            gameManager.addShadowArea(9, 3);
-            gameManager.addShadowArea(9, 4);
-            gameManager.addShadowArea(9, 6);
-            gameManager.addShadowArea(1, 4);
-            gameManager.addShadowArea(2, 4);
+            Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s5");
+            for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
+            {
+                gameManager.addShadowArea(shadowArea.unwalkableAreas[i].x, shadowArea.unwalkableAreas[i].y);
+            }
 
-            gameManager.addShadowArea(7, 4);
-            gameManager.addShadowArea(8, 4);
-
-            gameManager.addShadowArea(5, 0);
-            gameManager.addShadowArea(5, 2);
-            gameManager.addShadowArea(6, 4);
-            gameManager.addShadowArea(6, 5);
-            gameManager.addShadowArea(7, 5);
             //player
             scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(4, 7)));
             scene.entites[1].DrawOrder = 2;
@@ -600,18 +556,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[24].DrawOrder = 0;
             //dialoge
             dialouge.sceneToGo = 15;
-            dialouge.addDialogue(new dialouge("pEarth", "see leuuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Yellow!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "ma muuang", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Mango!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "rot gra ba", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Vego!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "fai chaek", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "zippo!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "meet", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "e to!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("pEarth", "chut chan nai", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Wago!!!", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue("A_S5", Content);
         }
         private void scene_LV6()
         {
@@ -620,61 +565,16 @@ namespace OneMoreStepToLoveYou
             gameManager.star_1_step = 50;
             gameManager.star_2_step = 48;
             gameManager.star_3_step = 46;
+            gameManager.sceneNumbrtToGO = 0;
 
             //grid
-            scene.entites.Add(new I_gridBox(17, 7, 0, 7, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(17, 7, 0, 4, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
-            gameManager.addShadowArea(0, 0);
-            gameManager.addShadowArea(0, 1);
-            gameManager.addShadowArea(0, 2);
-            gameManager.addShadowArea(0, 3);
-            gameManager.addShadowArea(0, 4);
-            gameManager.addShadowArea(0, 5);
-            gameManager.addShadowArea(0, 6);
-
-            gameManager.addShadowArea(0, 8);
-            gameManager.addShadowArea(0, 9);
-            gameManager.addShadowArea(0, 10);
-            gameManager.addShadowArea(0, 11);
-            gameManager.addShadowArea(0, 12);
-            gameManager.addShadowArea(0, 13);
-            gameManager.addShadowArea(0, 14);
-            gameManager.addShadowArea(0, 15);
-            gameManager.addShadowArea(0, 16);
-            gameManager.addShadowArea(6, 0);
-            gameManager.addShadowArea(6, 1);
-            gameManager.addShadowArea(6, 2);
-            gameManager.addShadowArea(6, 3);
-            gameManager.addShadowArea(6, 4);
-            gameManager.addShadowArea(6, 5);
-            gameManager.addShadowArea(6, 6);
-
-            gameManager.addShadowArea(6, 8);
-            gameManager.addShadowArea(6, 9);
-            gameManager.addShadowArea(6, 10);
-            gameManager.addShadowArea(6, 11);
-            gameManager.addShadowArea(6, 12);
-            gameManager.addShadowArea(6, 13);
-            gameManager.addShadowArea(6, 14);
-            gameManager.addShadowArea(6, 15);
-            gameManager.addShadowArea(6, 16);
-            gameManager.addShadowArea(1, 11);
-            gameManager.addShadowArea(2, 11);
-            gameManager.addShadowArea(4, 11);
-            gameManager.addShadowArea(5, 11);
-            gameManager.addShadowArea(3, 7);
-            gameManager.addShadowArea(1, 8);
-            gameManager.addShadowArea(1, 9);
-            gameManager.addShadowArea(1, 10);
-            gameManager.addShadowArea(5, 8);
-            gameManager.addShadowArea(5, 9);
-            gameManager.addShadowArea(5, 10);
-            gameManager.addShadowArea(1, 6);
-            gameManager.addShadowArea(5, 6);
-            gameManager.addShadowArea(2, 3);
-            gameManager.addShadowArea(4, 3);
-            gameManager.addShadowArea(1, 2);
-            gameManager.addShadowArea(5, 2);
+            Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s6");
+            for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
+            {
+                gameManager.addShadowArea(shadowArea.unwalkableAreas[i].x, shadowArea.unwalkableAreas[i].y);
+            }
 
             //player
             scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(3, 16)));
@@ -751,14 +651,11 @@ namespace OneMoreStepToLoveYou
             gameManager.ssr = (yaDov)scene.entites[33];
             scene.entites[33].DrawOrder = 3;
             //bg
-            //scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv6")));
-            //scene.entites[34].DrawOrder = 0;
+            scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv6")));
+            scene.entites[34].DrawOrder = 0;    
             //dialoge
             dialouge.sceneToGo = 15;
-            dialouge.addDialogue(new dialouge("pEarth", "omae wa mou shindeiru", Content.Load<Texture2D>("pEarthStand2"), 1.2f));
-            dialouge.addDialogue(new dialouge("pEarth", "rasengan!!!!!", Content.Load<Texture2D>("pEarthRasengunSaiNaKung"), 0.57f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "NANIIII!!", Content.Load<Texture2D>("nongBao"), 0.5f));
-            dialouge.addDialogue(new dialouge("Nong Bao", "Ahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", Content.Load<Texture2D>("nongBao"), 0.5f));
+            dialouge.addDialogue("A_S6", Content);
         }
         private void star_display()
         {
@@ -779,6 +676,46 @@ namespace OneMoreStepToLoveYou
             //dialoge
             dialouge.sceneToGo = 2;
             dialouge.addDialogue("B_S2", Content);
+            dialouge.MAX_BG_midderAlpha = 0.7f;
+
+            //scene
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+        }
+        private void dialogue_Lv3()
+        {
+            //dialoge
+            dialouge.sceneToGo = 3;
+            dialouge.addDialogue("B_S3", Content);
+            dialouge.MAX_BG_midderAlpha = 0.7f;
+
+            //scene
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+        }
+        private void dialogue_Lv4()
+        {
+            //dialoge
+            dialouge.sceneToGo = 4;
+            dialouge.addDialogue("B_S4", Content);
+            dialouge.MAX_BG_midderAlpha = 0.7f;
+
+            //scene
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+        }
+        private void dialogue_Lv5()
+        {
+            //dialoge
+            dialouge.sceneToGo = 5;
+            dialouge.addDialogue("B_S5", Content);
+            dialouge.MAX_BG_midderAlpha = 0.7f;
+
+            //scene
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+        }
+        private void dialogue_Lv6()
+        {
+            //dialoge
+            dialouge.sceneToGo = 6;
+            dialouge.addDialogue("B_S6", Content);
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene

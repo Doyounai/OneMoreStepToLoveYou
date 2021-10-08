@@ -136,7 +136,7 @@ namespace OneMoreStepToLoveYou.GameInterface
                 {
                     currentMessege += 1;
                     messege += dialogues[currentDialouge].getMessegeAt(currentMessege);
-                    currentMessege = currentMessege % dialogues[currentDialouge].messege.Length;
+                    //currentMessege = currentMessege % dialogues[currentDialouge].messege.Length;
                     TotalElapsed -= textSpeed;
                 }
 
@@ -189,18 +189,7 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         public void nextDialogue(object sender, System.EventArgs e)
         {
-            //end
-            if (currentDialouge >= dialogues.Count - 1)
-            {
-                Game1.changeSceneTo(sceneToGo);
-                return;
-            }
-
-            characterAlpha = 0;
-            currentDialouge += 1;
-            messege = "";
-            currentMessege = -1;
-            updateDialogue();
+            nextDialogue();
         }
 
         public void dialogeOn()

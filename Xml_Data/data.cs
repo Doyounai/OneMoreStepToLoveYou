@@ -14,4 +14,13 @@ namespace Xml_Data
     {
         public List<diaglogueInfo> dialogueInfos;
     }
+    public class gridCoordinate
+    {
+        public int x;
+        public int y;
+    }
+    public class levelUnwalkableArea
+    {
+        public gridCoordinate[] unwalkableAreas;
+    }
 }

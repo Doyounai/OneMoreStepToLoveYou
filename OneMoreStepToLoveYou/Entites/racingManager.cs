@@ -64,7 +64,8 @@ namespace OneMoreStepToLoveYou.Entites
         {
             if(currentDistance >= endDestination)
             {
-                Game1.changeSceneTo(4);
+                //Game1.changeSceneTo(4);
+                Game1.dialouge.dialogeOn();
                 return;
             }
 

@@ -65,7 +65,7 @@ namespace OneMoreStepToLoveYou.Entites
                 }
             }
             var offset = Matrix.CreateTranslation(
-                1920 / 3,
+                1920 / 2,
                 1080 / 2,
                 0);
 
