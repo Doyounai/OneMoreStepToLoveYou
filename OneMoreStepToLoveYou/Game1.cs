@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using OneMoreStepToLoveYou.GameInterface;
 using OneMoreStepToLoveYou.Entites;
 using System;
+using System.IO;
 
 namespace OneMoreStepToLoveYou
 {
@@ -72,6 +73,7 @@ namespace OneMoreStepToLoveYou
             //titleLoad();
             scene_LV6();
             //dialogue_Lv1();
+            //creadit();
 
             // TODO: use this.Content to load your game content here
         }
@@ -211,6 +213,9 @@ namespace OneMoreStepToLoveYou
                     break;
                 case 66://lv4 dialogue
                     dialogue_Lv6();
+                    break;
+                case 100://credit scene
+                    creadit();
                     break;
                 default:
                     break;
@@ -565,7 +570,7 @@ namespace OneMoreStepToLoveYou
             gameManager.star_1_step = 50;
             gameManager.star_2_step = 48;
             gameManager.star_3_step = 46;
-            gameManager.sceneNumbrtToGO = 0;
+            gameManager.sceneNumbrtToGO = 100;
 
             //grid
             scene.entites.Add(new I_gridBox(17, 7, 0, 4, Content.Load<SpriteFont>("debugFont"), graphics));
@@ -669,7 +674,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 1", Content));
         }
         private void dialogue_Lv2()
         {
@@ -679,7 +684,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 2", Content));
         }
         private void dialogue_Lv3()
         {
@@ -689,7 +694,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 3", Content));
         }
         private void dialogue_Lv4()
         {
@@ -699,7 +704,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 4", Content));
         }
         private void dialogue_Lv5()
         {
@@ -709,7 +714,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 5", Content));
         }
         private void dialogue_Lv6()
         {
@@ -719,7 +724,25 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image")));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 6", Content));
+        }
+        private void creadit()
+        {
+            scene.entites.Add(new I_Credit(Content, graphics));
+            (scene.entites[0] as I_Credit).newBackgroundTexture = Content.Load<Texture2D>("type1");
+            (scene.entites[0] as I_Credit).newBackgroundTexture = Content.Load<Texture2D>("type2");
+            (scene.entites[0] as I_Credit).newBackgroundTexture = Content.Load<Texture2D>("type3");
+            (scene.entites[0] as I_Credit).newBackgroundTexture = Content.Load<Texture2D>("type4");
+            (scene.entites[0] as I_Credit).updateBackgrounds();
+
+            string filepath = Path.Combine(@"Content\credit.txt");
+            FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs);
+            while(!sr.EndOfStream)
+            {
+                (scene.entites[0] as I_Credit).loadCredit(sr.ReadLine());
+            }
+            sr.Close();
         }
     }
 }

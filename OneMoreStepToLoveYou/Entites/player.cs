@@ -45,7 +45,12 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.updateStart();
                 Game1.dialouge.dialogeOn();
             }
-
+            
+            //re
+            if(keyboard.HasBeenPressed(Keys.R))
+            {
+                Game1.changeSceneTo(gameManager.currentLevel);
+            }
 
             //move left
             if (keyboard.HasBeenPressed(Keys.A) || keyboard.HasBeenPressed(Keys.Left))

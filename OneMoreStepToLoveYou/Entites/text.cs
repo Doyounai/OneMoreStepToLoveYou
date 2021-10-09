@@ -12,7 +12,9 @@ namespace OneMoreStepToLoveYou.Entites
     {
         private SpriteFont font;
         public Color fontColor;
-        private Vector2 position;
+        public Vector2 position;
+
+        private string messege;
 
         public text(SpriteFont font, Color fontColor, Vector2 position)
         {
@@ -21,7 +23,20 @@ namespace OneMoreStepToLoveYou.Entites
             this.position = position;
         }
 
+        public text(SpriteFont font, Color fontColor, Vector2 position, string messege)
+        {
+            this.font = font;
+            this.fontColor = fontColor;
+            this.position = position;
+            this.messege = messege;
+        }
+
         public void drawFont(SpriteBatch spriteBatch, String messege)
+        {
+            spriteBatch.DrawString(font, messege, position, fontColor);
+        }
+
+        public void drawFont(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(font, messege, position, fontColor);
         }

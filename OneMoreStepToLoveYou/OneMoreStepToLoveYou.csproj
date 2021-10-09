@@ -61,6 +61,7 @@
     <Compile Include="Entites\yaDov.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameInterface\I_bgGame.cs" />
+    <Compile Include="GameInterface\I_Credit.cs" />
     <Compile Include="GameInterface\I_dialogue_beforeScene.cs" />
     <Compile Include="GameInterface\I_dialouge.cs" />
     <Compile Include="GameInterface\I_gameInterface.cs" />

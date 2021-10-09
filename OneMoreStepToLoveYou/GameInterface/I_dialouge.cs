@@ -37,7 +37,7 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         private bool is_play;
 
-        private float transitionSpeed = 0.05f;
+        public float transitionSpeed = 0.02f;
         public float MAX_BG_midderAlpha = 0.9f;
         private float upperDestinationY = -340f;
         private float lowerDestinationY = 750f;

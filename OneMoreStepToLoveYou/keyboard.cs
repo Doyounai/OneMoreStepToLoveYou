@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using System;
+using Microsoft.Xna.Framework.Input;
 
 namespace OneMoreStepToLoveYou
 {
@@ -21,6 +22,11 @@ namespace OneMoreStepToLoveYou
         public static bool HasBeenPressed(Keys key)
         {
             return currentKeyState.IsKeyDown(key) && !previousKeyState.IsKeyDown(key);
+        }
+
+        internal static bool HasBeenPressed(object keys)
+        {
+            throw new NotImplementedException();
         }
     }
 }
