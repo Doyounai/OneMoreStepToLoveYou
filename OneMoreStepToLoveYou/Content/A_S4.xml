@@ -3,10 +3,22 @@
   <Asset Type="Xml_Data.dialoguesData">
 	<dialogueInfos>
 		<Item>
-			<name>....</name>
-			<messege>A S4</messege>
+			<name>สีเงิน</name>
+			<messege>พี่โล ---</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>???</name>
+			<messege>เธอน่ะ หยุดตรงนั้นแหละ</messege>
 			<imageName>nongBao</imageName>
 			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>. . . จังหวะมันคุ้น ๆ จัง *เหงื่อตก* </messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

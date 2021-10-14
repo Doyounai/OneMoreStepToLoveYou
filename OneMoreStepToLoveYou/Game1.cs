@@ -70,9 +70,11 @@ namespace OneMoreStepToLoveYou
             debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
 
             //in game entites
+            //beforeLevel4();
+            //titleLoadEnd();
             //titleLoad();
             scene_LV6();
-            //dialogue_Lv1();
+            //dialogue_Lv6();
             //creadit();
 
             // TODO: use this.Content to load your game content here
@@ -217,6 +219,18 @@ namespace OneMoreStepToLoveYou
                 case 100://credit scene
                     creadit();
                     break;
+                case 101://titleEnd
+                    titleLoadEnd();
+                    break;
+                case 404:
+                    beforeLevel4();
+                    break;
+                case 505:
+                    beforeLevel5();
+                    break;
+                case 111:
+                    finaScene();
+                    break;
                 default:
                     break;
             }
@@ -246,6 +260,10 @@ namespace OneMoreStepToLoveYou
         {
             scene.entites.Add(new I_titleScene(graphics, Content.Load<SpriteFont>("debugFont"), Content.Load<Texture2D>("title_test2")));
         }
+        private void titleLoadEnd()
+        {
+            scene.entites.Add(new titleEnd(graphics, Content.Load<SpriteFont>("debugFont"), Content.Load<Texture2D>("title_test2")));
+        }
         private void scene_LV1()
         {
             //set star
@@ -256,7 +274,7 @@ namespace OneMoreStepToLoveYou
             gameManager.sceneNumbrtToGO = 22;
 
             //grid
-            scene.entites.Add(new I_gridBox(6, 6, 1, 7, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(6, 6, 1, 7, Content.Load<SpriteFont>("debugFont"), graphics, false));
             scene.entites[0].DrawOrder = 1;
             Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s1");
             for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
@@ -321,7 +339,7 @@ namespace OneMoreStepToLoveYou
             gameManager.sceneNumbrtToGO = 33;
 
             //grid
-            scene.entites.Add(new I_gridBox(7, 8, 2, 4, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(7, 8, 1, 4, Content.Load<SpriteFont>("debugFont"), graphics, false));
             scene.entites[0].DrawOrder = 1;
             Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s2");
             for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
@@ -399,11 +417,11 @@ namespace OneMoreStepToLoveYou
             scene.entites[0].DrawOrder = 0;
 
             //player
-            scene.entites.Add(new playerRacing(Content.Load<Texture2D>("qq"), new gridPosition(1, 5)));
-            scene.entites[1].DrawOrder = 3;
+            scene.entites.Add(new playerRacing(Content.Load<Texture2D>("qq"), new gridPosition(1, 5), Content.Load<Texture2D>("motorBike")));
+            scene.entites[1].DrawOrder = 2;
 
             //crowd manager
-            scene.entites.Add(new racingManager(Content.Load<Texture2D>("qq")));
+            scene.entites.Add(new racingManager(Content.Load<Texture2D>("qq"), Content.Load<Texture2D>("motorBike")));
             scene.entites[2].DrawOrder = 1;
             (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type1");
             (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type2");
@@ -412,7 +430,7 @@ namespace OneMoreStepToLoveYou
             (scene.entites[2] as racingManager).updateBackgrounds();
 
             //dialoge
-            dialouge.sceneToGo = 44;
+            dialouge.sceneToGo = 404;
             dialouge.addDialogue("A_S3", Content);
         }
         private void scene_LV4()
@@ -422,10 +440,10 @@ namespace OneMoreStepToLoveYou
             gameManager.star_1_step = 37;
             gameManager.star_2_step = 35;
             gameManager.star_3_step = 33;
-            gameManager.sceneNumbrtToGO = 55;
+            gameManager.sceneNumbrtToGO = 505;
 
             //grid
-            scene.entites.Add(new I_gridBox(7, 8, 2, 4, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(7, 8, 2, 2, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 1;
             Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s4");
             for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
@@ -493,7 +511,7 @@ namespace OneMoreStepToLoveYou
             gameManager.sceneNumbrtToGO = 66;
 
             //grid
-            scene.entites.Add(new I_gridBox(8, 11, 1, 2, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(8, 11, 0, 3, Content.Load<SpriteFont>("debugFont"), graphics, false));
             scene.entites[0].DrawOrder = 1;
             Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s5");
             for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
@@ -570,10 +588,10 @@ namespace OneMoreStepToLoveYou
             gameManager.star_1_step = 50;
             gameManager.star_2_step = 48;
             gameManager.star_3_step = 46;
-            gameManager.sceneNumbrtToGO = 100;
+            gameManager.sceneNumbrtToGO = 111;
 
             //grid
-            scene.entites.Add(new I_gridBox(17, 7, 0, 4, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(17, 7, 0, 5, Content.Load<SpriteFont>("debugFont"), graphics, false));
             scene.entites[0].DrawOrder = 1;
             Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s6");
             for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
@@ -657,7 +675,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[33].DrawOrder = 3;
             //bg
             scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv6")));
-            scene.entites[34].DrawOrder = 0;    
+            scene.entites[34].DrawOrder = 0;
             //dialoge
             dialouge.sceneToGo = 15;
             dialouge.addDialogue("A_S6", Content);
@@ -694,7 +712,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 3", Content));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 2.5", Content));
         }
         private void dialogue_Lv4()
         {
@@ -704,7 +722,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 4", Content));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 3", Content));
         }
         private void dialogue_Lv5()
         {
@@ -714,7 +732,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 5", Content));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 4", Content));
         }
         private void dialogue_Lv6()
         {
@@ -724,7 +742,7 @@ namespace OneMoreStepToLoveYou
             dialouge.MAX_BG_midderAlpha = 0.7f;
 
             //scene
-            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 6", Content));
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Chapter 5", Content));
         }
         private void creadit()
         {
@@ -743,6 +761,70 @@ namespace OneMoreStepToLoveYou
                 (scene.entites[0] as I_Credit).loadCredit(sr.ReadLine());
             }
             sr.Close();
+        }
+        private void beforeLevel4()
+        {
+            //grid
+            scene.entites.Add(new I_gridBox(4, 10, 3, 4, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites[0].DrawOrder = 1;
+            gameManager.addShadowArea(0, 0);
+            gameManager.addShadowArea(1, 0);
+            gameManager.addShadowArea(2, 0);
+            gameManager.addShadowArea(3, 0);
+            gameManager.addShadowArea(4, 0);
+            gameManager.addShadowArea(0, 1);
+            gameManager.addShadowArea(1, 1);
+            gameManager.addShadowArea(2, 1);
+            gameManager.addShadowArea(3, 1);
+            gameManager.addShadowArea(4, 1);
+
+            //player
+            scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(0, 2), 44));
+            scene.entites[1].DrawOrder = 2;
+
+            //p earth
+            scene.entites.Add(new pEarth(new gridPosition(7, 0)));
+            scene.entites[2].DrawOrder = 3;
+
+            //bg
+            scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("BeforeLevel4")));
+            scene.entites[3].DrawOrder = 0;
+        }
+        private void beforeLevel5()
+        {
+            //grid
+            scene.entites.Add(new I_gridBox(4, 10, 2, 3, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites[0].DrawOrder = 1;
+            for (int i = 0; i <= 2; i++)
+            {
+                for (int k = 0; k <= 8; k++)
+                {
+                    gameManager.addShadowArea(k, i);
+                }
+            }
+
+
+            //player
+            scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(0, 3), 55));
+            scene.entites[1].DrawOrder = 2;
+
+            //p earth
+            scene.entites.Add(new pEarth(new gridPosition(9, 0)));
+            scene.entites[2].DrawOrder = 3;
+
+            //bg
+            scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("BeforeLv5")));
+            scene.entites[3].DrawOrder = 0;
+        }
+        private void finaScene()
+        {
+            //dialoge
+            dialouge.sceneToGo = 100;
+            dialouge.addDialogue("B_S6", Content);
+            dialouge.MAX_BG_midderAlpha = 0.7f;
+
+            //scene
+            scene.entites.Add(new I_dialogue_beforeScene(Content.Load<Texture2D>("B_S1_image"), "Sliver will return", Content, true));
         }
     }
 }

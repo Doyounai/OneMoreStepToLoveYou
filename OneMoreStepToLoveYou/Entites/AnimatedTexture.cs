@@ -66,6 +66,23 @@ namespace OneMoreStepToLoveYou.Entites
             frameWidht = myTexture.Width / frameCount;
             frameHeight = myTexture.Height / frameRow;
         }
+
+        public void Load(Texture2D sprite, int frameCount, int frameRow, int framesPerSec)
+        {
+            framecount = frameCount;
+            framerow = frameRow;
+            startframe = 0;
+            endframe = (frameCount * framerow) - 1;
+            myTexture = sprite;
+            TimePerFrame = (float)1 / framesPerSec;
+            Frame = 0;
+            frame_r = 0;
+            TotalElapsed = 0;
+            Paused = false;
+            Ended = false;
+            Overload = 2;
+        }
+
         public void Load(ContentManager content, string asset, int frameCount, int frameRow, int framesPerSec,int startRow)
         {
             framecount = frameCount;

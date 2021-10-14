@@ -22,9 +22,9 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         public I_titleScene(GraphicsDeviceManager graphics, SpriteFont font, Texture2D bg)
         {
-            startButton = new button(graphics, font, 220, 100, 10, new Vector2(360, 640), "Start", Color.Blue, Color.DarkBlue, Color.Gray, Color.DarkGray);
+            startButton = new button(graphics, font, 220, 100, 10, new Vector2(360, 640), "Start", Color.White, Color.GhostWhite, Color.Salmon, Color.Orange);
             startButton.Click += startOnClick;
-            exit = new button(graphics, font, 220, 100, 10, new Vector2(360, 760), "Exit", Color.Blue, Color.DarkBlue, Color.Gray, Color.DarkGray);
+            exit = new button(graphics, font, 220, 100, 10, new Vector2(360, 760), "Exit", Color.White, Color.GhostWhite, Color.Salmon, Color.Orange);
             this.bg = new Sprite(bg, Vector2.Zero, Color.White);
         }
 

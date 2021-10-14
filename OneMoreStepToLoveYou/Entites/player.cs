@@ -16,6 +16,8 @@ namespace OneMoreStepToLoveYou.Entites
         private bool is_yaDovNow = false;
         private bool is_ssr = false;
 
+        private int cutScene = 0;
+
         public player(Texture2D texture, gridPosition gridPos)
         {
             this.type = gridType.Player;
@@ -26,6 +28,19 @@ namespace OneMoreStepToLoveYou.Entites
             sprite.position -= kaninKitRail.getCenterPoint(sprite.gameSprite.Width, sprite.gameSprite.Height);
 
             gameManager.M_PLAYER = this;
+        }
+        public player(Texture2D texture, gridPosition gridPos, int cutScneToGo)
+        {
+            this.type = gridType.Player;
+            sprite = new Sprite(texture, gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].getCenterGridPosition, Color.White);
+            m_gridPosition = gridPos;
+            gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].type = gridType.Player;
+            sprite.position = gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].getCenterGridPosition;
+            sprite.position -= kaninKitRail.getCenterPoint(sprite.gameSprite.Width, sprite.gameSprite.Height);
+
+            gameManager.M_PLAYER = this;
+            is_ssr = true;
+            this.cutScene = cutScneToGo;
         }
 
         public void Update(float animator_elapsed)
@@ -271,6 +286,11 @@ namespace OneMoreStepToLoveYou.Entites
             {
                 if (!is_ssr)
                     return;
+                if(cutScene != 0)
+                {
+                    Game1.changeSceneTo(cutScene);
+                    return;
+                }
                 //transition                
                 gameManager.updateStart();
                 Game1.dialouge.dialogeOn();

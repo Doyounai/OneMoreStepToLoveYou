@@ -3,10 +3,52 @@
   <Asset Type="Xml_Data.dialoguesData">
 	<dialogueInfos>
 		<Item>
-			<name>....</name>
-			<messege>B S6</messege>
+			<name>พี่โลก</name>
+			<messege>เธอเนี่ย พยายามได้ดีในการมาถึงที่นี่นะสีเงิน</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>แต่มันก็ได้แค่นั้นแหละ</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>รุ่นพี่ นี่มันหมายความว่าไงเนี่ย </messege>
 			<imageName>nongBao</imageName>
 			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege> ฉันรู้ว่าเธอมีอะไรอยากจะบอกฉัน</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>แต่ว่า เธอต้องผ่านบททดสอบสุดท้ายจากฉันไปให้ได้ก่อนไงล่ะ</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>นั่นก็คือ มาให้ถึงตัวฉันไงล่ะ!!</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>ตะ ตะ แต่หนูแ----</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>เธอไม่มีสิทธิ์ปฏิเสธหรอกนะ!!!</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

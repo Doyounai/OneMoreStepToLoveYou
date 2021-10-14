@@ -3,8 +3,62 @@
   <Asset Type="Xml_Data.dialoguesData">
 	<dialogueInfos>
 		<Item>
-			<name>....</name>
-			<messege>B S5</messege>
+			<name>???</name>
+			<messege>ฉันรู้ดีว่าเธอคิดจะทำอะไร</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>???</name>
+			<messege>ในฐานะสมาคมFCพี่โลกแล้ว ฉันคงปล่อยให้เธอไปสารภาพรรักไม่ได้หรอกนะ</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>...แต่คุณคือ คนที่อยู่กับพี่โลกบ่อยๆ นี่ </messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>ใช่ ๆ คุณคือพี่หมีที่เรียนสาขาเดียวกับพี่โลกนี่</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>พี่หมี</name>
+			<messege>ก็เพราะแบบนั้นแหละ</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>พี่หมี</name>
+			<messege>ฉันถึงได้เป็นสมาชิกหมายเลข 1 ของสมาคมนี้ไงล่ะ!!!</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>ไม่รู้หรอกนะ ว่าพี่คิดจะทำอะไร </messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>แต่พี่หยุดหนูไม่ได้หรอก!!</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>พี่หมี</name>
+			<messege>กล้าดีนี่ งั้นลองเจอนี่หน่อยเป็นไง</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>พี่หมี</name>
+			<messege>ออกมาเลย เหล่าFCพี่โลกทั้งหลาย </messege>
 			<imageName>nongBao</imageName>
 			<imageScale>0.5</imageScale>
 		</Item>

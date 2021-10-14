@@ -3,10 +3,82 @@
   <Asset Type="Xml_Data.dialoguesData">
 	<dialogueInfos>
 		<Item>
-			<name>....</name>
-			<messege>A S6</messege>
-			<imageName>nongBao</imageName>
-			<imageScale>0.5</imageScale>
+			<name>สีเงิน</name>
+			<messege>*เหงื่อตก*</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>ก็ไม่รู้หรอกนะว่าเมื่อกี้มันอะไร แต่จะตามน้ำไปละกันนะ</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>เอาล่ะ จะเอื้อนเอ่ยล่ะนะ สิ่งที่อยู่ภายในใจของหนู!!</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>...... ???</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>*คิดในใจ* (เพราะเหนื่อยเกินไปเสียงเลยไม่ออกงั้นหรอ???)</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege> หึหึ </messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>เธอน่าจะเล็งที่หัวนะออกกำลังกายให้มากกว่านี้นะ</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>เมื่อเธอพลาดในบททดสอบ</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>มันก็ต้องมีบทลงโทษ</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>รับไป ราเซนกานนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนน</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>Gotcha เป็นดูเอลที่สนุกมาก</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>ฉันไปล่ะ เจ้าคนอ่อนหัด</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>ดะ เดี๋ยวสิ</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

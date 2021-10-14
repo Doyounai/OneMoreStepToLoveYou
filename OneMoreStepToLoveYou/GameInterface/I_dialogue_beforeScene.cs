@@ -25,9 +25,23 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         float countDownTime = 1f;
         bool isstartCountDown = false;
+        bool isFinalScene = false;
 
         public I_dialogue_beforeScene(Texture2D bg, string chapter, ContentManager content)
         {
+            this.bg = bg;
+
+            this.chapter = chapter;
+            Vector2 textPosition = new Vector2((1920 / 2) - content.Load<SpriteFont>("ChapterText").MeasureString(chapter).X / 2, 1080 / 2 - 100);
+            chapterText = new text(content.Load<SpriteFont>("ChapterText"), Color.White * 0, textPosition);
+            //Game1.dialouge.dialogeOn();
+        }
+
+        public I_dialogue_beforeScene(Texture2D bg, string chapter, ContentManager content, bool isFinalScene)
+        {
+            textFadeSpeed = 0.01f;
+            this.isFinalScene = isFinalScene;
+
             this.bg = bg;
 
             this.chapter = chapter;
@@ -60,7 +74,10 @@ namespace OneMoreStepToLoveYou.GameInterface
                         chapterText.fontColor = Color.White * textAlpha;
                         deltaTime = 0;
                         if (textAlpha <= 0)
+                        {
+                            Game1.changeSceneTo(100);
                             isstartCountDown = true;
+                        }
                     }
                 }
             }

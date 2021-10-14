@@ -3,10 +3,16 @@
   <Asset Type="Xml_Data.dialoguesData">
 	<dialogueInfos>
 		<Item>
-			<name>....</name>
-			<messege>A S3</messege>
+			<name>ยูกิ</name>
+			<messege>ฉันคงมาส่งได้เท่านี้แหละ</messege>
 			<imageName>nongBao</imageName>
 			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>อืม อาริกา thank so much</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

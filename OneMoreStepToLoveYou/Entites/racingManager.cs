@@ -36,12 +36,14 @@ namespace OneMoreStepToLoveYou.Entites
 
         //event hit
         private float startSpeed;
-        private float breakForce = 5f;
+        private float breakForce = 2f;
         private float breakTime = 4f;
         private float totalBreakTime = 0;
         public bool isBreak = false;
 
         float endDestination = 13000f;
+
+        Texture2D animationSprite;
 
         public Texture2D newBackgroundTexture
         {
@@ -51,13 +53,15 @@ namespace OneMoreStepToLoveYou.Entites
             }
         }
 
-        public racingManager(Texture2D texture)
+        public racingManager(Texture2D texture, Texture2D animationSprite)
         {
             this.texture = texture;
             spawnDistance = texture.Height + (spawnOffset * currentSpeed);
             gameManager.racingGameManager = this;
 
             startSpeed = currentSpeed;
+
+            this.animationSprite = animationSprite;
         }
 
         public void Update(float animator_elapsed)
@@ -65,6 +69,7 @@ namespace OneMoreStepToLoveYou.Entites
             if(currentDistance >= endDestination)
             {
                 //Game1.changeSceneTo(4);
+                isBreak = true;
                 Game1.dialouge.dialogeOn();
                 return;
             }
@@ -113,7 +118,7 @@ namespace OneMoreStepToLoveYou.Entites
 
         private void spawnCrowd()
         {
-            Game1.scene.Add(new crowdRacing(texture, rand.Next(0, 3), (isBreak) ? startSpeed : currentSpeed), 3);
+            Game1.scene.Add(new crowdRacing(texture, rand.Next(0, 3), (isBreak) ? startSpeed : currentSpeed, animationSprite), 3);
         }
 
         public void updateBackgrounds()
@@ -128,6 +133,7 @@ namespace OneMoreStepToLoveYou.Entites
             currentSpeed -= breakForce;
             isBreak = true;
             totalBreakTime = 0;
+            gameManager.racingPlayer.hitParticle(gameManager.racingPlayer.m_gridPosition);
         }
 
 

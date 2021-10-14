@@ -3,10 +3,64 @@
   <Asset Type="Xml_Data.dialoguesData">
 	<dialogueInfos>
 		<Item>
-			<name>....</name>
-			<messege>B S3</messege>
+			<name>สีเงิน</name>
+			<messege>นายก็คือ...</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>ยูกิ!!</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>ยูกิ</name>
+			<messege>หวัดดีสีเงิน ไหงเธอทำหน้าเหมือนโดนรุ่นพี่ที่แอบชอบขี่มอไซหนีไปเลยล่ะ</messege>
 			<imageName>nongBao</imageName>
 			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>แกเห็นสินะ เหตุการณ์เมื่อกี้อะ!! </messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>ยูกิ</name>
+			<messege>เอาน่า แล้วจะทำไงล่ะ จะตามไปมั้ย </messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>เวลานี้พี่เขาน่าจะกำลังไปกินข้าวที่อีกฝั่งของมอแล้วล่ะ T^T</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>ยูกิ</name>
+			<messege>ฉันไปส่งมั้ยล่ะ พอดีว่าง ๆ อะครับน้อง ๆ</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>ได้หรอ งั้นก็</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>Let สะ goooo </messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>นั่นไง คันนั้นแหละ</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

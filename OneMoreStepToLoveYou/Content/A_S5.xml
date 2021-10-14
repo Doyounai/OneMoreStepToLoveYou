@@ -3,8 +3,50 @@
   <Asset Type="Xml_Data.dialoguesData">
 	<dialogueInfos>
 		<Item>
-			<name>....</name>
-			<messege>A S5</messege>
+			<name>สีเงิน</name>
+			<messege>*เหงื่อตก*</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>พสีเงิน</name>
+			<messege>FCพวกนั้นแข็งแกร่งไม่เบาเลย แต่ฉันก็ผ่านมาได้</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>เอาล่ะ พี่โลกอยู่แค่ตรงหน้านี้แล้ว</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>ฉันรู้อยู่แล้วว่าเธอจะต้องมา</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>???</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>พี่โลก</name>
+			<messege>เอาล่ะ มาสิ มารับบททดสอบสุดท้ายจากฉันไปเลย</messege>
+			<imageName>pEarthRasengunSaiNaKung</imageName>
+			<imageScale>0.57</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>เดี๋ยว ๆๆๆๆๆๆ</messege>
+			<imageName>nongBao</imageName>
+			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>นี่มันไม่หลุดคอนเซปเกมไปแล้วหรอ!!</messege>
 			<imageName>nongBao</imageName>
 			<imageScale>0.5</imageScale>
 		</Item>

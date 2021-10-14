@@ -66,7 +66,7 @@ namespace OneMoreStepToLoveYou.GameInterface
         {
             if(currentDistance >= desitination)
             {
-                Game1.changeSceneTo(0);
+                Game1.changeSceneTo(101);
                 return;
             }
 

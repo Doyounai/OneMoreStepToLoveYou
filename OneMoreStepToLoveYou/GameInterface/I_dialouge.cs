@@ -39,8 +39,8 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         public float transitionSpeed = 0.02f;
         public float MAX_BG_midderAlpha = 0.9f;
-        private float upperDestinationY = -340f;
-        private float lowerDestinationY = 750f;
+        private float upperDestinationY = -360f;
+        private float lowerDestinationY = 860;
         private float transitionMovingSpeed = 15;
 
         private float BG_Alpha = 0;
@@ -91,10 +91,10 @@ namespace OneMoreStepToLoveYou.GameInterface
             BG_midder = new Sprite(kaninKitRail.getBoxTexture(graphics, (int)sceneSize.X, (int)sceneSize.Y, Color.Black, 0), startPoint, Color.White * 0);
             characterSprite = new Sprite(null, Vector2.Zero, Color.White * 0);
 
-            nameText = new text(nameFont, Color.Black, new Vector2(50, 780));
+            nameText = new text(nameFont, Color.Black, new Vector2(50, 890));
            // float nameX = (1920 / 2) - nameFont.MeasureString("1234567").X;
             //nameText = new text(nameFont, Color.Black, new Vector2());
-            messegeText = new text(messegeFont, Color.Black, new Vector2(80, 840));
+            messegeText = new text(messegeFont, Color.Black, new Vector2(80, 950));
         }
 
         public void buttonSetup(GraphicsDeviceManager graphics, SpriteFont font, int b_widht, int b_height, int strok, Vector2 position, string messege, Color t_idleColor, Color t_hoverColor, Color b_idleColor, Color b_hoverColor)

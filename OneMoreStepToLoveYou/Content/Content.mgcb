@@ -86,6 +86,30 @@
 /processor:PassThroughProcessor
 /build:B_S6.xml
 
+#begin BeforeLevel4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BeforeLevel4.png
+
+#begin BeforeLv5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BeforeLv5.png
+
 #begin ChapterText.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -169,7 +193,7 @@
 /processorParam:TextureFormat=Color
 /build:impactDust.png
 
-#begin Lv1.png
+#begin lv1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -179,7 +203,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Lv1.png
+/build:lv1.png
 
 #begin lv2.png
 /importer:TextureImporter
@@ -229,7 +253,7 @@
 /processorParam:TextureFormat=Color
 /build:lv6.png
 
-#begin Lv6_test.png
+#begin motorBike.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -239,7 +263,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Lv6_test.png
+/build:motorBike.png
 
 #begin nongBao.png
 /importer:TextureImporter

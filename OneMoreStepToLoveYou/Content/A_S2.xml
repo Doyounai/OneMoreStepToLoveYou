@@ -3,10 +3,34 @@
   <Asset Type="Xml_Data.dialoguesData">
 	<dialogueInfos>
 		<Item>
+			<name>สีเงิน</name>
+			<messege>รุ่นพี่โว้ย!! *อารมณ์เหมือนเรียกสายป่าน*</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>แล้วไหงแกบิดหนีไปเฉยเลยอะ</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege>คงต้องพอแล้วสินะ *ทำท่าทางถอดใจ*</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
+		</Item>
+		<Item>
 			<name>....</name>
-			<messege>A S2</messege>
+			<messege>ทำไมทำหน้าแบบนั่นล่ะ</messege>
 			<imageName>nongBao</imageName>
 			<imageScale>0.5</imageScale>
+		</Item>
+		<Item>
+			<name>สีเงิน</name>
+			<messege> นายก็คือ!!??</messege>
+			<imageName>pEarthStand2</imageName>
+			<imageScale>1.2</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

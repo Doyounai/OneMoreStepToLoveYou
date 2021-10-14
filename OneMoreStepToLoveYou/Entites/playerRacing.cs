@@ -14,8 +14,9 @@ namespace OneMoreStepToLoveYou.Entites
     public class playerRacing : character, I_gameInterface
     {
         public int DrawOrder { get; set; }
+        AnimatedTexture animator;
 
-        public playerRacing(Texture2D texture, gridPosition gridPos)
+        public playerRacing(Texture2D texture, gridPosition gridPos, Texture2D animationSprite)
         {
             this.moveSpeed = 15;
             this.type = gridType.Player;
@@ -23,6 +24,8 @@ namespace OneMoreStepToLoveYou.Entites
             m_gridPosition = gridPos;
             sprite.position = gameManager.GRID_DATA[m_gridPosition.row, m_gridPosition.column].getCenterGridPosition;
             sprite.position -= kaninKitRail.getCenterPoint(sprite.gameSprite.Width, sprite.gameSprite.Height);
+            animator = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+            animator.Load(animationSprite, 4, 4, 15);
 
             gameManager.racingPlayer = this;
         }
@@ -33,7 +36,8 @@ namespace OneMoreStepToLoveYou.Entites
                 return;
 
             keyboard.GetState();
-           
+            animator.UpdateFrame(animator_elapsed);
+
             updatePosition();
             if (is_move && Vector2.Distance(sprite.position, targetPosition) > 5f)
                 return;
@@ -46,14 +50,15 @@ namespace OneMoreStepToLoveYou.Entites
                 moveRight();
         }
 
-        private void hitParticle(gridPosition pos)
+        public void hitParticle(gridPosition pos)
         {
             Game1.scene.Add(new particle(kaninKitRail.convertGridPosToVectorPos(pos), 1.5f, "impactDust", 5, 1, 19), 5);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            //sprite.Draw(spriteBatch);
+            animator.DrawFrame(spriteBatch, sprite.position, 2);
         }
     }
 }
