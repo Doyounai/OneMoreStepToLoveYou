@@ -120,9 +120,9 @@ namespace OneMoreStepToLoveYou
             //in game entites
             //beforeLevel5();
             //titleLoadEnd();
-            //titleLoad();
+            titleLoad();
             //scene_LV4();
-            dialogue_Lv5();
+            //dialogue_Lv5();
             //creadit();
 
             // TODO: use this.Content to load your game content here

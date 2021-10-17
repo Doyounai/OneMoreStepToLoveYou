@@ -19,8 +19,8 @@ namespace OneMoreStepToLoveYou.GameInterface
         string chapter;
         text chapterText;
         float textAlpha = 0;
-        //float textFadeSpeed = 0.03f;
-        float textFadeSpeed = 1f;
+        float textFadeSpeed = 0.03f;
+        //float textFadeSpeed = 1f;
         float deltaTime = 0;
         bool fadeflag = false;
 
