@@ -4,15 +4,15 @@
 	<dialogueInfos>
 		<Item>
 			<name>สีเงิน</name>
-			<messege>รุ่นพี่ค่ะ!!</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<messege>รุ่นพี่คะ!!</messege>
+			<imageName>D1Sshout</imageName>
+			<imageScale>0.6</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
-			<messege>* หน้าตกใจ* เอ๋ หายไปเฉยเลย!!</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<messege>เอ๋ หายไปเฉยเลย!!</messege>
+			<imageName>D1Sbor</imageName>
+			<imageScale>0.6</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

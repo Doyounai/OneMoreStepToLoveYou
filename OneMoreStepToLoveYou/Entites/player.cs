@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using OneMoreStepToLoveYou.GameInterface;
+using Microsoft.Xna.Framework.Media;
 
 namespace OneMoreStepToLoveYou.Entites
 {
@@ -17,6 +18,8 @@ namespace OneMoreStepToLoveYou.Entites
         private bool is_ssr = false;
 
         private int cutScene = 0;
+        private float walkVolumn = 0.6f;
+        private float impactVolumn = 0.7f;
 
         public player(Texture2D texture, gridPosition gridPos)
         {
@@ -28,6 +31,10 @@ namespace OneMoreStepToLoveYou.Entites
             sprite.position -= kaninKitRail.getCenterPoint(sprite.gameSprite.Width, sprite.gameSprite.Height);
 
             gameManager.M_PLAYER = this;
+            MediaPlayer.Play(Game1.gameplaySong);
+
+            animator = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+            animator.Load(Game1.resource.playerSprite, 4, 6, 12);
         }
         public player(Texture2D texture, gridPosition gridPos, int cutScneToGo)
         {
@@ -41,6 +48,9 @@ namespace OneMoreStepToLoveYou.Entites
             gameManager.M_PLAYER = this;
             is_ssr = true;
             this.cutScene = cutScneToGo;
+
+            animator = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+            animator.Load(Game1.resource.playerSprite, 4, 6, 12);
         }
 
         public void Update(float animator_elapsed)
@@ -48,12 +58,14 @@ namespace OneMoreStepToLoveYou.Entites
             if (gameManager.is_PAUSE)
                 return;
 
+            animator.UpdateFrame(animator_elapsed);
+
             keyboard.GetState();
             #region player move            
             updatePosition();
             if (is_move && Vector2.Distance(sprite.position, targetPosition) > 5f)
                 return;
-            
+
             //cheat
             if(keyboard.HasBeenPressed(Keys.Space))
             {
@@ -70,22 +82,30 @@ namespace OneMoreStepToLoveYou.Entites
             //move left
             if (keyboard.HasBeenPressed(Keys.A) || keyboard.HasBeenPressed(Keys.Left))
             {
+                currentAnimation = 2;
                 keyLeft();
+                Game1.playSound(Game1.walkSound, walkVolumn);
             }
             //move right
             else if (keyboard.HasBeenPressed(Keys.D) || keyboard.HasBeenPressed(Keys.Right))
             {
+                currentAnimation = 5;
                 keyRight();
+                
+                Game1.playSound(Game1.walkSound, walkVolumn);
             }
             //move down
             else if (keyboard.HasBeenPressed(Keys.S) || keyboard.HasBeenPressed(Keys.Down))
             {
                 keyDown();
+                Game1.playSound(Game1.walkSound, walkVolumn);
             }
             //move up
             else if (keyboard.HasBeenPressed(Keys.W) || keyboard.HasBeenPressed(Keys.Up))
             {
+                currentAnimation = 4;
                 keyUp();
+                Game1.playSound(Game1.walkSound, walkVolumn);
             }
             #endregion
             checkCollision();
@@ -109,6 +129,7 @@ namespace OneMoreStepToLoveYou.Entites
                 //particle
                 //Game1.scene.Add(new particle(kaninKitRail.convertGridPosToVectorPos(m_gridPosition.up), 1.5f, "impactDust", 5, 1, 13), 5);
                 hitParticle(m_gridPosition.up);
+                Game1.playSound(Game1.impactSound, impactVolumn);
                 //crowd move
                 gameManager.crowds[m_gridPosition.up].originPath.Add(m_gridPosition.up);
                 gameManager.crowds[m_gridPosition.up].m_moveStep = gameManager.playerStep;
@@ -126,6 +147,7 @@ namespace OneMoreStepToLoveYou.Entites
             {
                 //particle
                 hitParticle(m_gridPosition.up);
+                Game1.playSound(Game1.impactSound, impactVolumn);
                 //crowd2
                 gameManager.crowds[m_gridPosition.up.up].originPath.Add(m_gridPosition.up.up);
                 gameManager.crowds[m_gridPosition.up.up].m_moveStep = gameManager.playerStep;
@@ -150,12 +172,14 @@ namespace OneMoreStepToLoveYou.Entites
             {
                 //particle
                 hitParticle(m_gridPosition.down);
+                Game1.playSound(Game1.impactSound, impactVolumn);
                 //crowd move
                 gameManager.crowds[m_gridPosition.down].originPath.Add(m_gridPosition.down);
                 gameManager.crowds[m_gridPosition.down].m_moveStep = gameManager.playerStep;
                 gameManager.crowds[m_gridPosition.down].moveDown();
                 moveDown();
                 gameManager.crowds[m_gridPosition.down].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.down].currentAnimation = 4;
             }
             //ya dov
             else if (
@@ -167,9 +191,11 @@ namespace OneMoreStepToLoveYou.Entites
             {
                 //particle
                 hitParticle(m_gridPosition.down);
+                Game1.playSound(Game1.impactSound, impactVolumn);
                 //crowd2
                 gameManager.crowds[m_gridPosition.down.down].originPath.Add(m_gridPosition.down.down);
                 gameManager.crowds[m_gridPosition.down.down].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.down.down].currentAnimation = 4;
                 gameManager.crowds[m_gridPosition.down.down].moveDown();
                 //crowd1
                 gameManager.crowds[m_gridPosition.down].originPath.Add(m_gridPosition.down);
@@ -177,6 +203,7 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.down].moveDown();
                 moveDown();
                 gameManager.crowds[m_gridPosition.down].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.down].currentAnimation = 4;
             }
         }
 
@@ -190,10 +217,13 @@ namespace OneMoreStepToLoveYou.Entites
                 )
             {
                 //particle
+                currentAnimation = 3;
                 hitParticle(m_gridPosition.left);
+                Game1.playSound(Game1.impactSound, impactVolumn);
                 //crowd move
                 gameManager.crowds[m_gridPosition.left].originPath.Add(m_gridPosition.left);
                 gameManager.crowds[m_gridPosition.left].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.left].currentAnimation = 3;
                 gameManager.crowds[m_gridPosition.left].moveLeft();
                 moveLeft();
                 gameManager.crowds[m_gridPosition.left].m_moveStep = gameManager.playerStep;
@@ -207,10 +237,13 @@ namespace OneMoreStepToLoveYou.Entites
                 )
             {
                 //particle
+                currentAnimation = 3;
                 hitParticle(m_gridPosition.left);
+                Game1.playSound(Game1.impactSound, impactVolumn);
                 //crowd2
                 gameManager.crowds[m_gridPosition.left.left].originPath.Add(m_gridPosition.left.left);
                 gameManager.crowds[m_gridPosition.left.left].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.left.left].currentAnimation = 3;
                 gameManager.crowds[m_gridPosition.left.left].moveLeft();
                 //crowd1
                 gameManager.crowds[m_gridPosition.left].originPath.Add(m_gridPosition.left);
@@ -218,6 +251,7 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.left].moveLeft();
                 moveLeft();
                 gameManager.crowds[m_gridPosition.left].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.left].currentAnimation = 3;
             }
         }
 
@@ -231,13 +265,16 @@ namespace OneMoreStepToLoveYou.Entites
                 )
             {
                 //particle
+                currentAnimation = 6;
                 hitParticle(m_gridPosition.right);
+                Game1.playSound(Game1.impactSound, impactVolumn);
                 //crowd move
                 gameManager.crowds[m_gridPosition.right].originPath.Add(m_gridPosition.right);
                 gameManager.crowds[m_gridPosition.right].m_moveStep = gameManager.playerStep;
                 gameManager.crowds[m_gridPosition.right].moveRight();
                 moveRight();
                 gameManager.crowds[m_gridPosition.right].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.right].currentAnimation = 2;
             }
             //ya dov
             else if (
@@ -247,11 +284,14 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.right.right].getNextGridType(m_gridPosition.right.right.right) == gridType.Walkable
                 )
             {
-                //particle
+                //particle.
+                currentAnimation = 6;
                 hitParticle(m_gridPosition.right);
+                Game1.playSound(Game1.impactSound, impactVolumn);
                 //crowd2
                 gameManager.crowds[m_gridPosition.right.right].originPath.Add(m_gridPosition.right.right);
                 gameManager.crowds[m_gridPosition.right.right].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.right.right].currentAnimation = 3;
                 gameManager.crowds[m_gridPosition.right.right].moveRight();
                 //crowd1
                 gameManager.crowds[m_gridPosition.right].originPath.Add(m_gridPosition.right);
@@ -259,6 +299,7 @@ namespace OneMoreStepToLoveYou.Entites
                 gameManager.crowds[m_gridPosition.right].moveRight();
                 moveRight();
                 gameManager.crowds[m_gridPosition.right].m_moveStep = gameManager.playerStep;
+                gameManager.crowds[m_gridPosition.right].currentAnimation = 3;
             }
         }
 
@@ -267,6 +308,7 @@ namespace OneMoreStepToLoveYou.Entites
             //yaDov
             if (gameManager.ya != null && this.sprite.rec.Intersects(gameManager.ya.sprite.rec))
             {
+                Game1.playSound(Game1.endScene);
                 Game1.scene.Remove(gameManager.ya);
                 gameManager.ya = null;
                 is_yaDovNow = true;
@@ -274,6 +316,7 @@ namespace OneMoreStepToLoveYou.Entites
             //ssr
             if(gameManager.ssr != null && this.sprite.rec.Intersects(gameManager.ssr.sprite.rec))
             {
+                Game1.playSound(Game1.SSR);
                 Game1.scene.Remove(gameManager.ssr);
                 gameManager.ssr = null;
                 is_ssr = true;
@@ -291,7 +334,8 @@ namespace OneMoreStepToLoveYou.Entites
                     Game1.changeSceneTo(cutScene);
                     return;
                 }
-                //transition                
+                //transition           
+                Game1.playSound(Game1.endScene);
                 gameManager.updateStart();
                 Game1.dialouge.dialogeOn();
                 //Game1.changeSceneTo(2);
@@ -305,7 +349,8 @@ namespace OneMoreStepToLoveYou.Entites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            //sprite.Draw(spriteBatch);
+            animator.DrawFrame(spriteBatch, kaninKitRail.convertGridPosToVectorPos(m_gridPosition), currentAnimation);
         }
     }
 }

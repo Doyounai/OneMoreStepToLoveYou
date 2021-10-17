@@ -108,7 +108,8 @@ namespace OneMoreStepToLoveYou.Entites
             if (levelStar[currentLevel - 1] < star)
                 levelStar[currentLevel - 1] = star;
 
-            Console.WriteLine(getCurrentStar);
+            //Console.WriteLine(playerStep);
+            //Console.WriteLine(getCurrentStar);
         }
 
         //call when player move

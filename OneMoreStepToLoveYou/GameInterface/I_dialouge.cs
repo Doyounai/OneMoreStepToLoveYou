@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using OneMoreStepToLoveYou.Entites;
@@ -38,7 +39,7 @@ namespace OneMoreStepToLoveYou.GameInterface
         private bool is_play;
 
         public float transitionSpeed = 0.02f;
-        public float MAX_BG_midderAlpha = 0.9f;
+        public float MAX_BG_midderAlpha = 0.6f;
         private float upperDestinationY = -360f;
         private float lowerDestinationY = 860;
         private float transitionMovingSpeed = 15;
@@ -67,6 +68,9 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         public int sceneToGo;
 
+        SoundEffectInstance sound;
+        SoundEffect typingSound;
+
         public void addDialogue(dialouge newDialouge)
         {
             dialogues.Add(newDialouge);
@@ -82,7 +86,7 @@ namespace OneMoreStepToLoveYou.GameInterface
             }
         }
 
-        public I_dialouge(GraphicsDeviceManager graphics, SpriteFont nameFont, SpriteFont messegeFont)
+        public I_dialouge(GraphicsDeviceManager graphics, SpriteFont nameFont, SpriteFont messegeFont, ContentManager content)
         {
             Vector2 sceneSize = new Vector2(graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height);
             Vector2 startPoint = Vector2.Zero;
@@ -95,6 +99,10 @@ namespace OneMoreStepToLoveYou.GameInterface
            // float nameX = (1920 / 2) - nameFont.MeasureString("1234567").X;
             //nameText = new text(nameFont, Color.Black, new Vector2());
             messegeText = new text(messegeFont, Color.Black, new Vector2(80, 950));
+
+            typingSound = content.Load<SoundEffect>("typing");
+            sound = typingSound.CreateInstance();
+            sound.IsLooped = true;
         }
 
         public void buttonSetup(GraphicsDeviceManager graphics, SpriteFont font, int b_widht, int b_height, int strok, Vector2 position, string messege, Color t_idleColor, Color t_hoverColor, Color b_idleColor, Color b_hoverColor)
@@ -134,10 +142,15 @@ namespace OneMoreStepToLoveYou.GameInterface
                 TotalElapsed += animator_elapsed;
                 if (BG_Alpha > 0.9f && TotalElapsed > textSpeed && currentMessege < dialogues[currentDialouge].messege.Length - 1)
                 {
+                    sound.Play();
                     currentMessege += 1;
                     messege += dialogues[currentDialouge].getMessegeAt(currentMessege);
                     //currentMessege = currentMessege % dialogues[currentDialouge].messege.Length;
                     TotalElapsed -= textSpeed;
+                }
+                else if(currentMessege >= dialogues[currentDialouge].messege.Length - 1)
+                {
+                    sound.Stop();
                 }
 
                 m_button.Update();
@@ -166,17 +179,21 @@ namespace OneMoreStepToLoveYou.GameInterface
             characterSprite.gameSprite = dialogues[currentDialouge].image;
             characterSprite.position = kaninKitRail.getCenterPoint(1920, 1080) -
                 new Vector2(dialogues[currentDialouge].image.Width / 2, dialogues[currentDialouge].image.Height / 2) * dialogues[currentDialouge].imageScale;
-            characterSprite.position.Y -= 150;
+            //characterSprite.position.Y -= 150;
+            characterSprite.position.Y += 80;
 
             name = dialogues[currentDialouge].name;
         }
 
         public void nextDialogue()
         {
+            Game1.playSound(Game1.Click);
+
             //end
             if (currentDialouge >= dialogues.Count - 1)
             {
                 Game1.changeSceneTo(sceneToGo);
+                sound.Volume = 0;
                 return;
             }
 

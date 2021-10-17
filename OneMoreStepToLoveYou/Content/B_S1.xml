@@ -5,98 +5,98 @@
 		<Item>
 			<name>สีเงิน</name>
 			<messege>วันนี้หน้ามอบรรยากาศดีจังนะ เหมือนจะได้เจออะไรดี ๆ เลย</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>พี่โลก</name>
 			<messege>สวัสดีน้องสีเงิน เจอกันแต่เช้าเลยนะ</messege>
-			<imageName>pEarthRasengunSaiNaKung</imageName>
-			<imageScale>0.57</imageScale>
+			<imageName>D1Ppostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>*เขิล*</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Sshy</imageName>
+			<imageScale>0.5</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>หวัดดีค่ะพี่โลก</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Sshy</imageName>
+			<imageScale>0.5</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
-			<messege>เอ่อคือ…. เราก็รู้จักกันมาสักพักแล้ว พี่เรียกหนูว่าสีเงินมันก็ดูห่างเหินไป</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<messege>เอ่อคือ... เราก็รู้จักกันมาสักพักแล้ว พี่เรียกหนูว่าสีเงินมันก็ดูห่างเหินไป</messege>
+			<imageName>D1Sshy</imageName>
+			<imageScale>0.5</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>พี่จะเรียกหนูว่าที่รั ----</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Sshy</imageName>
+			<imageScale>0.5</imageScale>
 		</Item>
 		<Item>
 			<name>พี่โลก</name>
 			<messege>หืมมม เมื่อกี้น้องพูดว่าไงนะ พี่ไม่ค่อยได้ยินเลย</messege>
-			<imageName>pEarthRasengunSaiNaKung</imageName>
-			<imageScale>0.57</imageScale>
+			<imageName>D1Ppostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>*เพิ่มvolumeเสียงตัวเอง* คือหนูจะบอกว่า</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Sshy</imageName>
+			<imageScale>0.5</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>เรามาค ---</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Sshy</imageName>
+			<imageScale>0.5</imageScale>
 		</Item>
 		<Item>
 			<name>พี่โลก</name>
-			<messege>แปบนะ เพื่อนพี่โทรมาอะ *ชี้ไปที่โทรศัพท์*</messege>
-			<imageName>pEarthRasengunSaiNaKung</imageName>
-			<imageScale>0.57</imageScale>
+			<messege>แปบนะ เพื่อนพี่โทรมาอะ </messege>
+			<imageName>D1Ppostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>พี่โลก</name>
-			<messege>คือพี่ต้องไปแล้วอะ ไว้เจอกันนะ *เดินหนีห่าง*</messege>
-			<imageName>pEarthRasengunSaiNaKung</imageName>
-			<imageScale>0.57</imageScale>
+			<messege>คือพี่ต้องไปแล้วอะ ไว้เจอกันนะ </messege>
+			<imageName>D1Ppostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>....</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Sbor</imageName>
+			<imageScale>0.6</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
-			<messege>เล่นตัดบทกันแบบนี้รู้สึกเฟลเลยอะ </messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<messege>เล่นตัดบทกันแบบนี้รู้สึกเฟลเลยอะ</messege>
+			<imageName>D1Sbor</imageName>
+			<imageScale>0.6</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege> เอ๊ะ นี่มันSSRไอดอลวง SSSSSSpecial - 360Fa ver ka [titaniuam finish] สุดรักสุดหวงของพี่โลกนี่</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Sgetssr</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
-			<messege>*ทำหน้าดีใจ* น่ะ น่ะ นี่ไงล่ะ ถ้าเราแกล้ง ๆ เอาไปคืนก็จะได้มีเรื่องคุย</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<messege>น่ะ น่ะ นี่ไงล่ะ ถ้าเราแกล้ง ๆ เอาไปคืนก็จะได้มีเรื่องคุย</messege>
+			<imageName>D1Sgetssr</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
-			<messege>แล้วตอนนั้นเอง เราก็จะฉวยโอกาสขอคบกับพี่เขาไปเลย *มีไฟ*</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<messege>แล้วตอนนั้นเอง เราก็จะฉวยโอกาสขอคบกับพี่เขาไปเลย</messege>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

@@ -5,32 +5,32 @@
 		<Item>
 			<name>สีเงิน</name>
 			<messege>จำได้ว่าพี่โลกจะจอดเวฟร้อยล้อไทเทไว้ที่ลานจอดรถ</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D2thik</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>เราก็แค่ต้องไปหาเขาที่ลานจอดรถแค่นั้นเอง</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>เอาล่ะ ถึงลานจอดรถแล้ว</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>ไหนดูซิ พี่โลก ๆๆๆ *หลี่ตา*</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D2loking</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>นั่นไง</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

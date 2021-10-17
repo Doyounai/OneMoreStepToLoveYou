@@ -34,6 +34,11 @@ namespace OneMoreStepToLoveYou.Entites
             sprite.position -= kaninKitRail.getCenterPoint(sprite.gameSprite.Width, sprite.gameSprite.Height);
 
             gameManager.crowds.Add(m_gridPosition, this);
+
+            animator = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+            animator.Load(Game1.resource.crowd1, 4, 4, 4);
+            isCorwd = true;
+            currentAnimation = getRandomAnimation();
         }
 
         public crowd(Texture2D texture, gridPosition gridPos, crowdType type)
@@ -44,11 +49,19 @@ namespace OneMoreStepToLoveYou.Entites
             {
                 color = Color.Red;
                 this.crowdMoveStep = 1;
+                animator = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+                animator.Load(Game1.resource.crowd3, 4, 4, 4);
+                isCorwd = true;
+                currentAnimation = getRandomAnimation();
             }
             else if(type == crowdType.slow)
             {
                 color = Color.Green;
                 this.crowdMoveStep = 5;
+                animator = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+                animator.Load(Game1.resource.crowd2, 4, 4, 4);
+                isCorwd = true;
+                currentAnimation = getRandomAnimation();
             }
 
             this.type = gridType.Crowd;
@@ -64,12 +77,15 @@ namespace OneMoreStepToLoveYou.Entites
         {
             if (gameManager.is_PAUSE)
                 return;
+
+            animator.UpdateFrame(animator_elapsed);
             updatePosition();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch);
+            //sprite.Draw(spriteBatch);
+            animator.DrawFrame(spriteBatch, kaninKitRail.convertGridPosToVectorPos(m_gridPosition), currentAnimation);
         }
 
         public void goBack()
@@ -79,6 +95,19 @@ namespace OneMoreStepToLoveYou.Entites
                 getNextGridType(originPath[originPath.Count - 1]) != gridType.Crowd
                 )
             {
+                //move up
+                if (m_gridPosition.row > originPath[originPath.Count - 1].row)
+                    currentAnimation = 4;
+                //down
+                else if (m_gridPosition.row < originPath[originPath.Count - 1].row)
+                    currentAnimation = 1;
+                //left
+                else if (m_gridPosition.column > originPath[originPath.Count - 1].column)
+                    currentAnimation = 2;
+                //right
+                else if (m_gridPosition.column < originPath[originPath.Count - 1].column)
+                    currentAnimation = 3;
+
                 changePosition(originPath[originPath.Count - 1]);
                 originPath.RemoveAt(originPath.Count - 1);
             }

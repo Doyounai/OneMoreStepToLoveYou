@@ -16,6 +16,11 @@ namespace OneMoreStepToLoveYou.Entites
         public bool is_move = false;
         public gridType type;
 
+
+        public AnimatedTexture animator;
+        public int currentAnimation = 1;
+        public bool isCorwd = false;
+
         public void moveLeft()
         {
             if (m_gridPosition.column <= 0 || gameManager.GRID_DATA[m_gridPosition.left.row, m_gridPosition.left.column].type == gridType.Unwalkable)
@@ -69,6 +74,8 @@ namespace OneMoreStepToLoveYou.Entites
                 {
                     is_move = false;
                     sprite.position = targetPosition;
+                    if (!isCorwd)
+                        currentAnimation = 1;
                     return;
                 }
                 Vector2 diration = targetPosition - sprite.position;
@@ -76,6 +83,11 @@ namespace OneMoreStepToLoveYou.Entites
                 diration *= moveSpeed;
                 sprite.position += diration;
             }
+        }
+
+        public int getRandomAnimation()
+        {
+            return Game1.rand.Next(1, 5);
         }
     }
 }

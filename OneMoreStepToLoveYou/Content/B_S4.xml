@@ -5,20 +5,20 @@
 		<Item>
 			<name>สีเงิน</name>
 			<messege>ที่นี่มันคนเยอะจริง ๆ</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>*หลี่ตา*</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D2loking</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>อะ เจอแล้ว ๆ แต่อยู่ไกลจังแหะ</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

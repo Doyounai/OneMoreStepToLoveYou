@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using OneMoreStepToLoveYou.GameInterface;
 
@@ -26,9 +28,6 @@ namespace OneMoreStepToLoveYou.Entites
         private float spawnDistance;
         private float spawnOffset = 20;
 
-        //Random
-        public Random rand = new Random();
-
         //back ground
         private int topBackgroundIndex;
         private Sprite[] backgroundSprites = new Sprite[2];
@@ -45,6 +44,12 @@ namespace OneMoreStepToLoveYou.Entites
 
         Texture2D animationSprite;
 
+
+        public static SoundEffectInstance sound;
+
+        public static SoundEffect soundfast;
+        public static SoundEffect soundBreak;
+
         public Texture2D newBackgroundTexture
         {
             set
@@ -53,7 +58,7 @@ namespace OneMoreStepToLoveYou.Entites
             }
         }
 
-        public racingManager(Texture2D texture, Texture2D animationSprite)
+        public racingManager(Texture2D texture, Texture2D animationSprite, ContentManager content)
         {
             this.texture = texture;
             spawnDistance = texture.Height + (spawnOffset * currentSpeed);
@@ -62,6 +67,14 @@ namespace OneMoreStepToLoveYou.Entites
             startSpeed = currentSpeed;
 
             this.animationSprite = animationSprite;
+
+            soundfast = content.Load<SoundEffect>("racingFast");
+            soundBreak = content.Load<SoundEffect>("racingBreak");
+
+            sound = soundfast.CreateInstance();
+            sound.Volume = 0.7f;
+            sound.IsLooped = true;
+            sound.Play();
         }
 
         public void Update(float animator_elapsed)
@@ -71,6 +84,7 @@ namespace OneMoreStepToLoveYou.Entites
                 //Game1.changeSceneTo(4);
                 isBreak = true;
                 Game1.dialouge.dialogeOn();
+                sound.Stop();
                 return;
             }
 
@@ -89,6 +103,12 @@ namespace OneMoreStepToLoveYou.Entites
                 {
                     isBreak = false;
                     currentSpeed = startSpeed;
+
+                    sound.Stop();
+                    sound = soundfast.CreateInstance();
+                    sound.Volume = 0.7f;
+                    sound.IsLooped = true;
+                    sound.Play();
                 }
             }
 
@@ -109,7 +129,7 @@ namespace OneMoreStepToLoveYou.Entites
                 if(backgroundSprites[i].position.Y > 1080)
                 {
                     backgroundSprites[i].position.Y = backgroundSprites[topBackgroundIndex].position.Y - 1080;
-                    backgroundSprites[i].gameSprite = backgroundTextures[rand.Next(0, backgroundTextures.Count - 1)];
+                    backgroundSprites[i].gameSprite = backgroundTextures[Game1.rand.Next(0, backgroundTextures.Count - 1)];
                     topBackgroundIndex = i;
                     backgroundSprites[i].position.Y += currentSpeed;
                 }
@@ -118,14 +138,14 @@ namespace OneMoreStepToLoveYou.Entites
 
         private void spawnCrowd()
         {
-            Game1.scene.Add(new crowdRacing(texture, rand.Next(0, 3), (isBreak) ? startSpeed : currentSpeed, animationSprite), 3);
+            Game1.scene.Add(new crowdRacing(texture, Game1.rand.Next(0, 3), (isBreak) ? startSpeed : currentSpeed, animationSprite), 3);
         }
 
         public void updateBackgrounds()
         {
             topBackgroundIndex = 1;
-            backgroundSprites[0] = new Sprite(backgroundTextures[rand.Next(0, backgroundTextures.Count - 1)], Vector2.Zero, Color.White);
-            backgroundSprites[1] = new Sprite(backgroundTextures[rand.Next(0, backgroundTextures.Count - 1)], new Vector2(0, -1080), Color.White);
+            backgroundSprites[0] = new Sprite(backgroundTextures[Game1.rand.Next(0, backgroundTextures.Count)], Vector2.Zero, Color.White);
+            backgroundSprites[1] = new Sprite(backgroundTextures[Game1.rand.Next(0, backgroundTextures.Count)], new Vector2(0, -1080), Color.White);
         }
 
         public void เบรครถ()
@@ -134,6 +154,14 @@ namespace OneMoreStepToLoveYou.Entites
             isBreak = true;
             totalBreakTime = 0;
             gameManager.racingPlayer.hitParticle(gameManager.racingPlayer.m_gridPosition);
+
+            sound.Stop();
+            sound = soundBreak.CreateInstance();
+            sound.Volume = 1f;
+            sound.IsLooped = true;
+            sound.Play();
+
+            Game1.playSound(Game1.impactSound);
         }
 
 

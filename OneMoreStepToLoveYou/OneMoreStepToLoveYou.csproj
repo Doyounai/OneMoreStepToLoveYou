@@ -44,11 +44,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entites\AnimatedTexture.cs" />
+    <Compile Include="Entites\AnimationObject.cs" />
     <Compile Include="Entites\button.cs" />
     <Compile Include="Entites\character.cs" />
     <Compile Include="Entites\crowd.cs" />
     <Compile Include="Entites\crowdRacing.cs" />
     <Compile Include="Entites\gameManager.cs" />
+    <Compile Include="Entites\gameResource.cs" />
     <Compile Include="Entites\gridItem.cs" />
     <Compile Include="Entites\particle.cs" />
     <Compile Include="Entites\pEarth.cs" />

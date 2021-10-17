@@ -49,6 +49,7 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         private static void startOnClick(object sender, System.EventArgs e)
         {
+            Game1.playSound(Game1.Click);
             Game1.changeSceneTo(start_lv);
         }
 
@@ -56,20 +57,24 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         private static void level2(object sender, System.EventArgs e)
         {
+            Game1.playSound(Game1.Click);
             Game1.changeSceneTo(22);
         }
         private static void level3(object sender, System.EventArgs e)
         {
+            Game1.playSound(Game1.Click);
             Game1.changeSceneTo(44);
         }
 
         private static void level4(object sender, System.EventArgs e)
         {
+            Game1.playSound(Game1.Click);
             Game1.changeSceneTo(55);
         }
 
         private static void level5(object sender, System.EventArgs e)
         {
+            Game1.playSound(Game1.Click);
             Game1.changeSceneTo(66);
         }
 

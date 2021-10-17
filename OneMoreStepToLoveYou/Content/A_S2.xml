@@ -4,33 +4,33 @@
 	<dialogueInfos>
 		<Item>
 			<name>สีเงิน</name>
-			<messege>รุ่นพี่โว้ย!! *อารมณ์เหมือนเรียกสายป่าน*</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<messege>รุ่นพี่โว้ย!!</messege>
+			<imageName>D1Sshout</imageName>
+			<imageScale>0.6</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>แล้วไหงแกบิดหนีไปเฉยเลยอะ</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Sbor</imageName>
+			<imageScale>0.6</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
-			<messege>คงต้องพอแล้วสินะ *ทำท่าทางถอดใจ*</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<messege>คงต้องพอแล้วสินะ</messege>
+			<imageName>D1Sbor</imageName>
+			<imageScale>0.6</imageScale>
 		</Item>
 		<Item>
 			<name>....</name>
 			<messege>ทำไมทำหน้าแบบนั่นล่ะ</messege>
-			<imageName>nongBao</imageName>
+			<imageName>D2Ypostcut</imageName>
 			<imageScale>0.5</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege> นายก็คือ!!??</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

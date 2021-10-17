@@ -5,14 +5,14 @@
 		<Item>
 			<name>ยูกิ</name>
 			<messege>ฉันคงมาส่งได้เท่านี้แหละ</messege>
-			<imageName>nongBao</imageName>
-			<imageScale>0.5</imageScale>
+			<imageName>D25Ypostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 		<Item>
 			<name>สีเงิน</name>
 			<messege>อืม อาริกา thank so much</messege>
-			<imageName>pEarthStand2</imageName>
-			<imageScale>1.2</imageScale>
+			<imageName>D1Spostcut</imageName>
+			<imageScale>0.4</imageScale>
 		</Item>
 	</dialogueInfos>
   </Asset>

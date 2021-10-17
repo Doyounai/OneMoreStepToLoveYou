@@ -19,7 +19,8 @@ namespace OneMoreStepToLoveYou.GameInterface
         string chapter;
         text chapterText;
         float textAlpha = 0;
-        float textFadeSpeed = 0.03f;
+        //float textFadeSpeed = 0.03f;
+        float textFadeSpeed = 1f;
         float deltaTime = 0;
         bool fadeflag = false;
 
@@ -75,7 +76,10 @@ namespace OneMoreStepToLoveYou.GameInterface
                         deltaTime = 0;
                         if (textAlpha <= 0)
                         {
-                            Game1.changeSceneTo(100);
+                            if (isFinalScene)
+                            {
+                                Game1.changeSceneTo(100);
+                            }
                             isstartCountDown = true;
                         }
                     }

@@ -7,6 +7,9 @@ using OneMoreStepToLoveYou.GameInterface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 
 namespace OneMoreStepToLoveYou.Entites
 {
@@ -15,6 +18,7 @@ namespace OneMoreStepToLoveYou.Entites
     {
         public int DrawOrder { get; set; }
         AnimatedTexture animator;
+
 
         public playerRacing(Texture2D texture, gridPosition gridPos, Texture2D animationSprite)
         {
@@ -28,6 +32,9 @@ namespace OneMoreStepToLoveYou.Entites
             animator.Load(animationSprite, 4, 4, 15);
 
             gameManager.racingPlayer = this;
+
+            MediaPlayer.Volume = 0.5f;
+            MediaPlayer.Play(Game1.racingSong);
         }
 
         public void Update(float animator_elapsed)

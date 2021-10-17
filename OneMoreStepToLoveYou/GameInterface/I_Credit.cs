@@ -34,7 +34,7 @@ namespace OneMoreStepToLoveYou.GameInterface
         float textSkipSpeed = 10;
         float startText_Y = 1100;
 
-        float desitination = 68000;
+        float desitination = 155000;
         float currentDistance = 0;
 
         Texture2D blackPlant;
