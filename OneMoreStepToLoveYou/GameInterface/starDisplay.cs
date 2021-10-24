@@ -34,7 +34,7 @@ namespace OneMoreStepToLoveYou.GameInterface
 
             if(totalTime >= popupDelay && currentStar < gameManager.getCurrentStar)
             {
-                Game1.playSound(Game1.star, 0.6f);
+                Game1.playSound(Game1.star, 0.2f);
                 currentStar += 1;
                 totalTime = 0;
                 Vector2 position = new Vector2(1920 / 2 - (star.Width * 3 + starMargin * 2) / 2, (1080 / 2) - (star.Height / 2));

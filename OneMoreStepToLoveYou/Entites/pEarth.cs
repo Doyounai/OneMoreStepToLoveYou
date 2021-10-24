@@ -21,8 +21,8 @@ namespace OneMoreStepToLoveYou.Entites
         public pEarth(gridPosition position, ContentManager content, string asset, int frameCount, int frameRow, int framesPerSec)
         {
             animator = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
-            //animator.Load(content, asset, frameCount, frameRow, 15);
-            animator.Load(Game1.resource.pEarthSprite, 4, 1, 2);
+            animator.Load(content, asset, frameCount, frameRow, framesPerSec);
+            //animator.Load(Game1.resource.pEarthSprite, 4, 1, 2);
             //this.position = gameManager.GRID_DATA[position.row, position.column].getCenterGridPosition;
             this.position = kaninKitRail.convertGridPosToVectorPos(position);
             gameManager.pEarthPosition = position;

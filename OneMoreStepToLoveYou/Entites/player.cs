@@ -18,8 +18,8 @@ namespace OneMoreStepToLoveYou.Entites
         private bool is_ssr = false;
 
         private int cutScene = 0;
-        private float walkVolumn = 0.6f;
-        private float impactVolumn = 0.7f;
+        private float walkVolumn = 0.1f;
+        private float impactVolumn = 0.1f;
 
         public player(Texture2D texture, gridPosition gridPos)
         {
@@ -31,6 +31,7 @@ namespace OneMoreStepToLoveYou.Entites
             sprite.position -= kaninKitRail.getCenterPoint(sprite.gameSprite.Width, sprite.gameSprite.Height);
 
             gameManager.M_PLAYER = this;
+            //MediaPlayer.Volume = 0;
             MediaPlayer.Play(Game1.gameplaySong);
 
             animator = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
@@ -67,16 +68,18 @@ namespace OneMoreStepToLoveYou.Entites
                 return;
 
             //cheat
-            if(keyboard.HasBeenPressed(Keys.Space))
+            /*if(keyboard.HasBeenPressed(Keys.Space))
             {
                 gameManager.updateStart();
                 Game1.dialouge.dialogeOn();
-            }
+            }*/
+            if (keyboard.HasBeenPressed(Keys.Escape))
+                Game1.pausePanel.Activate();
             
             //re
             if(keyboard.HasBeenPressed(Keys.R))
             {
-                Game1.changeSceneTo(gameManager.currentLevel);
+                Game1.changeSceneTo(Game1.currentLevel);
             }
 
             //move left

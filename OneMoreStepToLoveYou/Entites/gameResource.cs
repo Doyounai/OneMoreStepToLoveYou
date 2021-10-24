@@ -24,6 +24,13 @@ namespace OneMoreStepToLoveYou.Entites
         public Texture2D ssrCard;
         public Texture2D yaDov;
 
+        //ui
+        public Texture2D song;
+        public Texture2D soundEffect;
+        public Texture2D check;
+
+        public SpriteFont dummyFont;
+
         public gameResource(ContentManager Content)
         {
             playerSprite = Content.Load<Texture2D>("Silver");
@@ -35,6 +42,11 @@ namespace OneMoreStepToLoveYou.Entites
 
             ssrCard = Content.Load<Texture2D>("SSRCard");
             yaDov = Content.Load<Texture2D>("yaDov");
+            song = Content.Load<Texture2D>("song");
+            soundEffect = Content.Load<Texture2D>("soundEffect");
+            check = Content.Load<Texture2D>("check");
+
+            dummyFont = Content.Load<SpriteFont>("debugFont");
         }
     }
 }

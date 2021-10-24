@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 using OneMoreStepToLoveYou.GameInterface;
 using OneMoreStepToLoveYou.Entites;
 using System;
@@ -15,13 +15,14 @@ namespace OneMoreStepToLoveYou
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static Random rand = new Random();
+        public static Game1 self;
 
         //scene
         public static I_sceneManager scene = new I_sceneManager();
-        text debugText;
         static int sceneToGo;
 
         //transitional
+        public static int currentLevel = 0;
         public static float transitionSpeed = 0.03f;
         float transitionAlpha = 1f;
         Sprite transitionPanel;
@@ -51,6 +52,13 @@ namespace OneMoreStepToLoveYou
 
         public static gameResource resource;
 
+        public static I_pausePanel pausePanel;
+
+        public void exit()
+        {
+            this.Exit();
+        }
+
         public static void playSound(SoundEffect sound)
         {
             var instance = sound.CreateInstance();
@@ -68,6 +76,7 @@ namespace OneMoreStepToLoveYou
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            self = this;
         }
 
         protected override void Initialize()
@@ -85,7 +94,6 @@ namespace OneMoreStepToLoveYou
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             gameManager.content = Content;
 
             //camera
@@ -98,10 +106,7 @@ namespace OneMoreStepToLoveYou
             dialouge = new I_dialouge(graphics, Content.Load<SpriteFont>("dialogueName_Font"), Content.Load<SpriteFont>("dialogueMessege_font"), Content);
             dialouge.buttonSetup(graphics, Content.Load<SpriteFont>("dialogueNextFont"), 120, 80, 10, new Vector2(1690, 980), "Next", Color.Gray, Color.Black, Color.White, Color.White);
 
-            //debug texts
-            debugText = new text(Content.Load<SpriteFont>("debugFont"), Color.Black, Vector2.Zero);
-
-            //sound
+            //sound song
             walkSound = Content.Load<SoundEffect>("playerWalk");
             impactSound = Content.Load<SoundEffect>("playerImpact");
             powerUP = Content.Load<SoundEffect>("powerUP");
@@ -109,19 +114,19 @@ namespace OneMoreStepToLoveYou
             SSR = Content.Load<SoundEffect>("SSR");
             Click = Content.Load<SoundEffect>("Click");
             star = Content.Load<SoundEffect>("Star");
-
-            //song
             racingSong = Content.Load<Song>("racingGame");
             titleSong = Content.Load<Song>("titleSong");
             gameplaySong = Content.Load<Song>("gameplayMusic");
 
+            pausePanel = new I_pausePanel(graphics, Content);
             resource = new gameResource(Content);
 
             //in game entites
-            //beforeLevel5();
+            //beforeLevel4();
             //titleLoadEnd();
+            //scene_LV3();
             titleLoad();
-            //scene_LV4();
+            //secretLevel();
             //dialogue_Lv5();
             //creadit();
 
@@ -135,9 +140,6 @@ namespace OneMoreStepToLoveYou
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             // TODO: Add your update logic here 
             #region transition
             if (is_fadeIn)
@@ -167,8 +169,10 @@ namespace OneMoreStepToLoveYou
                 }
                 else if (transitionAlpha <= 0)
                     is_fadeOut = false;
-
-                //load some content
+            }
+            else if(pausePanel.is_acitve)
+            {
+                pausePanel.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             }
             else
             {
@@ -187,30 +191,18 @@ namespace OneMoreStepToLoveYou
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-
             //draw component
             if (is_CameraOn)
                 spriteBatch.Begin(transformMatrix: camera.Transform);
             else
                 spriteBatch.Begin();
 
-            //bg_sprite.Draw(spriteBatch);
             scene.Draw(spriteBatch);
-            /*string debugMessege = "";
-            for (int i = 0; i < gameManager.GRID_ROW; i++)
-            {
-                for (int j = 0; j < gameManager.GRID_COLUMN; j++)
-                {
-                    debugMessege += gameManager.GRID_DATA[i, j].type.ToString() + "   | ";
-                }
-                debugMessege += "\n";
-            }
-            debugMessege += "\n\n\n\n" + gameManager.playerStep;
-            debugText.drawFont(spriteBatch, debugMessege);*/
             spriteBatch.End();
 
             //draw transition
             spriteBatch.Begin();
+            pausePanel.Draw(spriteBatch);
             dialouge.Draw(spriteBatch);
             transitionPanel.Draw(spriteBatch);
             spriteBatch.End();
@@ -280,6 +272,9 @@ namespace OneMoreStepToLoveYou
                 case 111:
                     finaScene();
                     break;
+                case 7:
+                    secretLevel();
+                    break;
                 default:
                     break;
             }
@@ -288,9 +283,13 @@ namespace OneMoreStepToLoveYou
         public static void changeSceneTo(int sceneIndex)
         {
             //transitionSpeed = 0.05f;
+            MediaPlayer.Stop();
             sceneToGo = sceneIndex;
             //fade transition panel
             is_fadeIn = true;
+            scene.entites = new List<I_gameInterface>();
+            if (currentLevel == 3)
+                racingManager.sound.Stop();
         }
 
         private static void resetConfingulation()
@@ -308,6 +307,7 @@ namespace OneMoreStepToLoveYou
         private void titleLoad()
         {
             scene.entites.Add(new I_titleScene(graphics, Content.Load<SpriteFont>("debugFont"), Content.Load<Texture2D>("title_test2")));
+            scene.entites.Add(new audioControlPanel(graphics));
         }
         private void titleLoadEnd()
         {
@@ -315,6 +315,7 @@ namespace OneMoreStepToLoveYou
         }
         private void scene_LV1()
         {
+            currentLevel = 1;
             //set star
             gameManager.currentLevel = 1;
             gameManager.star_1_step = 25;
@@ -362,7 +363,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[13].DrawOrder = 3;
 
             //p earth
-            scene.entites.Add(new pEarth(new gridPosition(0, 0), Content, "CoketumpBreathe", 3, 1, 10));
+            scene.entites.Add(new pEarth(new gridPosition(0, 0), Content, "eath", 4, 1, 2));
             scene.entites[14].DrawOrder = 2;
 
             //ssr
@@ -378,10 +379,11 @@ namespace OneMoreStepToLoveYou
             scene.entites.Add(new AnimationObject(new Vector2(0, 1280), Content.Load<Texture2D>("motorBike"), 4, 4, new Vector2(0, -500), 6));
             (scene.entites[17] as AnimationObject).lockAnimationRow(3);
             scene.entites[17].DrawOrder = 2;
-
             scene.entites.Add(new AnimationObject(new Vector2(260, -1500), Content.Load<Texture2D>("motorBike"), 4, 4, new Vector2(260, 1500), 8));
             (scene.entites[18] as AnimationObject).lockAnimationRow(1);
             scene.entites[18].DrawOrder = 2;
+
+            scene.entites.Add(new audioControlPanel(graphics));
 
             //dialoge
             dialouge.sceneToGo = 15;
@@ -389,6 +391,7 @@ namespace OneMoreStepToLoveYou
         }
         private void scene_LV2()
         {
+            currentLevel = 2;
             //set star
             gameManager.currentLevel = 2;
             gameManager.star_1_step = 31;
@@ -452,7 +455,7 @@ namespace OneMoreStepToLoveYou
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 1)));
             scene.entites[21].DrawOrder = 3;
             //p earth
-            scene.entites.Add(new pEarth(new gridPosition(7, 0), Content, "CoketumpBreathe", 3, 1, 10));
+            scene.entites.Add(new pEarth(new gridPosition(7, 0), Content, "eath", 4, 1, 2));
             scene.entites[22].DrawOrder = 2;
 
             //ssr
@@ -470,12 +473,15 @@ namespace OneMoreStepToLoveYou
             (scene.entites[25] as AnimationObject).setSize(3.55f);
             scene.entites[25].DrawOrder = 2;
 
+            scene.entites.Add(new audioControlPanel(graphics));
+
             //dialoge
             dialouge.sceneToGo = 15;
             dialouge.addDialogue("A_S2", Content);
         }
         private void scene_LV3()
         {
+            currentLevel = 3;
             //grid
             scene.entites.Add(new I_gridBox(8, 3, 1, 6, Content.Load<SpriteFont>("debugFont"), graphics));
             scene.entites[0].DrawOrder = 0;
@@ -493,12 +499,16 @@ namespace OneMoreStepToLoveYou
             (scene.entites[2] as racingManager).newBackgroundTexture = Content.Load<Texture2D>("type4");
             (scene.entites[2] as racingManager).updateBackgrounds();
 
+            scene.entites.Add(new audioControlPanel(graphics));
+            scene.entites[3].DrawOrder = 5;
+
             //dialoge
             dialouge.sceneToGo = 404;
             dialouge.addDialogue("A_S3", Content);
         }
         private void scene_LV4()
         {
+            currentLevel = 4;
             //set star
             gameManager.currentLevel = 3;
             gameManager.star_1_step = 37;
@@ -507,7 +517,7 @@ namespace OneMoreStepToLoveYou
             gameManager.sceneNumbrtToGO = 505;
 
             //grid
-            scene.entites.Add(new I_gridBox(7, 8, 2, 2, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(7, 8, 2, 2, Content.Load<SpriteFont>("debugFont"), graphics, false));
             scene.entites[0].DrawOrder = 1;
             Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s4");
             for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
@@ -552,7 +562,7 @@ namespace OneMoreStepToLoveYou
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 1)));
             scene.entites[16].DrawOrder = 3;
             //p earth
-            scene.entites.Add(new pEarth(new gridPosition(0, 2), Content, "CoketumpBreathe", 3, 1, 10));
+            scene.entites.Add(new pEarth(new gridPosition(0, 2), Content, "eath", 4, 1, 2));
             scene.entites[17].DrawOrder = 2;
             //ssr
             scene.entites.Add(new yaDov(new gridPosition(5, 3), Content.Load<Texture2D>("qq"), resource.ssrCard));
@@ -561,12 +571,16 @@ namespace OneMoreStepToLoveYou
             //bg
             scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv4")));
             scene.entites[19].DrawOrder = 0;
+
+            scene.entites.Add(new audioControlPanel(graphics));
+
             //dialoge
             dialouge.sceneToGo = 15;
             dialouge.addDialogue("A_S4", Content);
         } 
         private void scene_LV5()
         {
+            currentLevel = 5;
             //set star
             gameManager.currentLevel = 4;
             gameManager.star_1_step = 80;
@@ -600,7 +614,6 @@ namespace OneMoreStepToLoveYou
             scene.entites[5].DrawOrder = 3;
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(0, 0)));
             scene.entites[6].DrawOrder = 3;
-
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 2)));
             scene.entites[7].DrawOrder = 3;
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(2, 1)));
@@ -632,7 +645,7 @@ namespace OneMoreStepToLoveYou
             scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(10, 2)));
             scene.entites[21].DrawOrder = 3;
             //p earth
-            scene.entites.Add(new pEarth(new gridPosition(4, 5), Content, "CoketumpBreathe", 3, 1, 10));
+            scene.entites.Add(new pEarth(new gridPosition(4, 5), Content, "eath", 4, 1, 2));
             scene.entites[22].DrawOrder = 3;
             //ssr
             scene.entites.Add(new yaDov(new gridPosition(8, 5), Content.Load<Texture2D>("qq"), resource.ssrCard));
@@ -641,12 +654,16 @@ namespace OneMoreStepToLoveYou
             //bg
             scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv5")));
             scene.entites[24].DrawOrder = 0;
+
+            scene.entites.Add(new audioControlPanel(graphics));
+
             //dialoge
             dialouge.sceneToGo = 15;
             dialouge.addDialogue("A_S5", Content);
         }
         private void scene_LV6()
         {
+            currentLevel = 6;
             //set star
             gameManager.currentLevel = 5;
             gameManager.star_1_step = 50;
@@ -731,7 +748,7 @@ namespace OneMoreStepToLoveYou
             scene.entites[31].DrawOrder = 3;
 
             //p earth
-            scene.entites.Add(new pEarth(new gridPosition(3, 0), Content, "CoketumpBreathe", 3, 1, 10));
+            scene.entites.Add(new pEarth(new gridPosition(3, 0), Content, "eath", 4, 1, 2));
             scene.entites[32].DrawOrder = 3;
             //ssr
             scene.entites.Add(new yaDov(new gridPosition(1, 3), Content.Load<Texture2D>("qq"), resource.ssrCard));
@@ -740,6 +757,90 @@ namespace OneMoreStepToLoveYou
             //bg
             scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("Lv6")));
             scene.entites[34].DrawOrder = 0;
+
+            //scene.entites.Add(new audioControlPanel(graphics));
+
+            //dialoge
+            dialouge.sceneToGo = 15;
+            dialouge.addDialogue("A_S6", Content);
+        }
+        public void secretLevel()
+        {
+            currentLevel = 7;
+            //set star
+            gameManager.currentLevel = 6;
+            gameManager.star_1_step = 50;
+            gameManager.star_2_step = 48;
+            gameManager.star_3_step = 46;
+            gameManager.sceneNumbrtToGO = 111;
+
+            scene.entites.Add(new I_gridBox(7, 13, 1, 2, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites[0].DrawOrder = 1;
+            Xml_Data.levelUnwalkableArea shadowArea = Content.Load<Xml_Data.levelUnwalkableArea>("shadowArea_s7");
+            for (int i = 0; i < shadowArea.unwalkableAreas.Length; i++)
+            {
+                gameManager.addShadowArea(shadowArea.unwalkableAreas[i].x, shadowArea.unwalkableAreas[i].y);
+            }
+
+            //player
+            scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(6, 0)));
+            scene.entites[1].DrawOrder = 2;
+            //ya dob
+            scene.entites.Add(new yaDov(new gridPosition(0, 0), Content.Load<Texture2D>("ya"), resource.yaDov));
+            gameManager.ya = (yaDov)scene.entites[2];
+            scene.entites[2].DrawOrder = 2;
+            //crowd
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(4, 2)));
+            scene.entites[3].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(5, 4)));
+            scene.entites[4].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(5, 2)));
+            scene.entites[5].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(5, 3)));
+            scene.entites[6].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(7, 2)));
+            scene.entites[7].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(7, 3)));
+            scene.entites[8].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(8, 2)));
+            scene.entites[9].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(8, 4)));
+            scene.entites[10].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(10, 2)));
+            scene.entites[11].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(10, 4)));
+            scene.entites[12].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 2)));
+            scene.entites[13].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 4)));
+            scene.entites[14].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 0)));
+            scene.entites[15].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(5, 0)));
+            scene.entites[16].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(1, 3)));
+            scene.entites[17].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(7, 4)));
+            scene.entites[18].DrawOrder = 3;
+            scene.entites.Add(new crowd(Content.Load<Texture2D>("Player"), new gridPosition(9, 3)));
+            scene.entites[19].DrawOrder = 3;
+            //p earth
+            scene.entites.Add(new pEarth(new gridPosition(0, 6), Content, "fuckingHolyDog", 2, 1, 5));
+            scene.entites[20].DrawOrder = 2;
+
+            //ssr
+            scene.entites.Add(new yaDov(new gridPosition(12, 6), Content.Load<Texture2D>("qq"), resource.ssrCard));
+            gameManager.ssr = (yaDov)scene.entites[21];
+            scene.entites[21].DrawOrder = 3;
+            //bg
+            scene.entites.Add(new I_bgGame(Content.Load<Texture2D>("secretLevel")));
+            scene.entites[22].DrawOrder = 0;
+            //bg
+            scene.entites.Add(new I_bgGame(kaninKitRail.getBoxTexture(graphics, 1920, 1080, Color.Black * 0.7f, 0)));
+            scene.entites[23].DrawOrder = 4;
+
+            scene.entites.Add(new audioControlPanel(graphics));
+
             //dialoge
             dialouge.sceneToGo = 15;
             dialouge.addDialogue("A_S6", Content);
@@ -829,7 +930,7 @@ namespace OneMoreStepToLoveYou
         private void beforeLevel4()
         {
             //grid
-            scene.entites.Add(new I_gridBox(4, 10, 3, 4, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(4, 10, 3, 4, Content.Load<SpriteFont>("debugFont"), graphics, false));
             scene.entites[0].DrawOrder = 1;
             gameManager.addShadowArea(0, 0);
             gameManager.addShadowArea(1, 0);
@@ -841,6 +942,8 @@ namespace OneMoreStepToLoveYou
             gameManager.addShadowArea(2, 1);
             gameManager.addShadowArea(3, 1);
             gameManager.addShadowArea(4, 1);
+            gameManager.addShadowArea(6, 0);
+            gameManager.addShadowArea(8, 0);
 
             //player
             scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(0, 2), 44));
@@ -857,7 +960,7 @@ namespace OneMoreStepToLoveYou
         private void beforeLevel5()
         {
             //grid
-            scene.entites.Add(new I_gridBox(4, 10, 2, 3, Content.Load<SpriteFont>("debugFont"), graphics));
+            scene.entites.Add(new I_gridBox(4, 10, 2, 3, Content.Load<SpriteFont>("debugFont"), graphics, false));
             scene.entites[0].DrawOrder = 1;
             for (int i = 0; i <= 2; i++)
             {
@@ -866,7 +969,6 @@ namespace OneMoreStepToLoveYou
                     gameManager.addShadowArea(k, i);
                 }
             }
-
 
             //player
             scene.entites.Add(new player(Content.Load<Texture2D>("qq"), new gridPosition(0, 3), 55));

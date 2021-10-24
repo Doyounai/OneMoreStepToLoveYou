@@ -27,14 +27,14 @@ namespace OneMoreStepToLoveYou.GameInterface
             startButton.Click += startOnClick;
             exit = new button(graphics, font, 220, 100, 10, new Vector2(360, 760), "Exit", Color.White, Color.GhostWhite, Color.Salmon, Color.Orange);
             this.bg = new Sprite(bg, Vector2.Zero, Color.White);
-            MediaPlayer.Volume = 0.5f;
+            //MediaPlayer.Volume = 0.5f;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(Game1.titleSong);
         }
 
         private static void startOnClick(object sender, System.EventArgs e)
         {
-            Game1.playSound(Game1.Click);
+            Game1.playSound(Game1.Click, 0.3f);
             Game1.changeSceneTo(start_lv);
         }
 

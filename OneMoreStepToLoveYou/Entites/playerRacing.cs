@@ -33,7 +33,8 @@ namespace OneMoreStepToLoveYou.Entites
 
             gameManager.racingPlayer = this;
 
-            MediaPlayer.Volume = 0.5f;
+            if(!audioControlPanel.is_musicMute)
+                MediaPlayer.Volume = 0.5f;
             MediaPlayer.Play(Game1.racingSong);
         }
 
@@ -48,6 +49,10 @@ namespace OneMoreStepToLoveYou.Entites
             updatePosition();
             if (is_move && Vector2.Distance(sprite.position, targetPosition) > 5f)
                 return;
+
+            if (keyboard.HasBeenPressed(Keys.Escape))
+                Game1.pausePanel.Activate();
+
 
             //move left
             if (keyboard.HasBeenPressed(Keys.A) || keyboard.HasBeenPressed(Keys.Left))

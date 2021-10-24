@@ -72,13 +72,16 @@ namespace OneMoreStepToLoveYou.Entites
             soundBreak = content.Load<SoundEffect>("racingBreak");
 
             sound = soundfast.CreateInstance();
-            sound.Volume = 0.7f;
+            sound.Volume = 0.1f;
             sound.IsLooped = true;
             sound.Play();
         }
 
         public void Update(float animator_elapsed)
         {
+            if (gameManager.is_PAUSE)
+                return;
+
             if(currentDistance >= endDestination)
             {
                 //Game1.changeSceneTo(4);
@@ -106,7 +109,7 @@ namespace OneMoreStepToLoveYou.Entites
 
                     sound.Stop();
                     sound = soundfast.CreateInstance();
-                    sound.Volume = 0.7f;
+                    sound.Volume = 0.1f;
                     sound.IsLooped = true;
                     sound.Play();
                 }
@@ -157,11 +160,11 @@ namespace OneMoreStepToLoveYou.Entites
 
             sound.Stop();
             sound = soundBreak.CreateInstance();
-            sound.Volume = 1f;
+            sound.Volume = 0.1f;
             sound.IsLooped = true;
             sound.Play();
 
-            Game1.playSound(Game1.impactSound);
+            Game1.playSound(Game1.impactSound, 0.2f);
         }
 
 

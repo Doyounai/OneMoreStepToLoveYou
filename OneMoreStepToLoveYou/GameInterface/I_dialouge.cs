@@ -102,6 +102,7 @@ namespace OneMoreStepToLoveYou.GameInterface
 
             typingSound = content.Load<SoundEffect>("typing");
             sound = typingSound.CreateInstance();
+            sound.Volume = 0.3f;
             sound.IsLooped = true;
         }
 
@@ -187,7 +188,7 @@ namespace OneMoreStepToLoveYou.GameInterface
 
         public void nextDialogue()
         {
-            Game1.playSound(Game1.Click);
+            Game1.playSound(Game1.Click, 0.3f);
 
             //end
             if (currentDialouge >= dialogues.Count - 1)
