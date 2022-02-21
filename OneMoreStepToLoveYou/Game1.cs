@@ -30,7 +30,7 @@ namespace OneMoreStepToLoveYou
         static bool is_fadeIn = false;
 
         //dialogue
-        public static I_dialouge dialouge;
+        public static I_dialouge dialouge;  
 
         //camera
         playerCamera camera;
@@ -84,7 +84,7 @@ namespace OneMoreStepToLoveYou
             // TODO: Add your initialization logic here
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             this.IsMouseVisible = true;
             graphics.ApplyChanges();
             base.Initialize();
@@ -122,13 +122,7 @@ namespace OneMoreStepToLoveYou
             resource = new gameResource(Content);
 
             //in game entites
-            //beforeLevel4();
-            //titleLoadEnd();
-            //scene_LV3();
-            titleLoad();
-            //secretLevel();
-            //dialogue_Lv5();
-            //creadit();
+            scene_LV1();
 
             // TODO: use this.Content to load your game content here
         }

@@ -53,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>image0.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -100,6 +100,7 @@
     <Compile Include="GameInterface\I_pausePanel.cs" />
     <Compile Include="GameInterface\I_sceneManager.cs" />
     <Compile Include="GameInterface\I_titleScene.cs" />
+    <Compile Include="GameInterface\Logo.cs" />
     <Compile Include="GameInterface\starDisplay.cs" />
     <Compile Include="GameInterface\titleEnd.cs" />
     <Compile Include="kaninKitRail.cs" />
@@ -116,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="image0.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

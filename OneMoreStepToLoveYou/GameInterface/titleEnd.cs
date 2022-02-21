@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace OneMoreStepToLoveYou.GameInterface
 {
@@ -32,6 +33,7 @@ namespace OneMoreStepToLoveYou.GameInterface
             startButton = new button(graphics, font, 220, 100, 10, new Vector2(100, 640), "Start", Color.White, Color.GhostWhite, Color.Salmon, Color.Orange);
             startButton.Click += startOnClick;
             exit = new button(graphics, font, 220, 100, 10, new Vector2(100, 760), "Exit", Color.White, Color.GhostWhite, Color.Salmon, Color.Orange);
+            exit.Click += exitGame;
 
             level1_button = new button(graphics, font, 220, 100, 10, new Vector2(350, 640), "Level1", Color.White, Color.GhostWhite, Color.BurlyWood, Color.Brown);
             level1_button.Click += startOnClick;
@@ -45,12 +47,18 @@ namespace OneMoreStepToLoveYou.GameInterface
             level5_button.Click += level5;
 
             this.bg = new Sprite(bg, Vector2.Zero, Color.White);
+            MediaPlayer.Play(Game1.titleSong);
         }
 
         private static void startOnClick(object sender, System.EventArgs e)
         {
             Game1.playSound(Game1.Click);
             Game1.changeSceneTo(start_lv);
+        }
+
+        private static void exitGame(object sender, System.EventArgs e)
+        {
+            Game1.self.Exit();
         }
 
         #region scene change event

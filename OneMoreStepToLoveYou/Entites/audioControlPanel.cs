@@ -26,7 +26,7 @@ namespace OneMoreStepToLoveYou.Entites
         public static bool is_musicMute = false;
         public static bool is_soundEffectMute = false;
 
-        float maxVolumn = 0.05f;
+        float maxVolumn = 0.08f;
 
         public audioControlPanel(GraphicsDeviceManager graphic)
         {

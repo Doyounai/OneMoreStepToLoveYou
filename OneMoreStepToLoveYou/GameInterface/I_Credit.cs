@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using OneMoreStepToLoveYou.Entites;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace OneMoreStepToLoveYou.GameInterface
 {
@@ -51,6 +52,8 @@ namespace OneMoreStepToLoveYou.GameInterface
         {
             this.content = content;
             blackPlant = kaninKitRail.getBoxTexture(graphic, 1920, 1080, Color.Black * 0.6f, 0);
+            MediaPlayer.Volume = 0.2f;
+            MediaPlayer.Play(Game1.gameplaySong);
         }
 
         public void loadCredit(string credit)
@@ -66,6 +69,7 @@ namespace OneMoreStepToLoveYou.GameInterface
         {
             if(currentDistance >= desitination)
             {
+                MediaPlayer.Volume = 0.08f;
                 Game1.changeSceneTo(101);
                 return;
             }

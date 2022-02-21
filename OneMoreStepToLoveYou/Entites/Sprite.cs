@@ -38,5 +38,18 @@ namespace OneMoreStepToLoveYou.Entites
         {
             spriteBatch.Draw(gameSprite, position, null, tintColor, 0, Vector2.Zero, scale, SpriteEffects.None, 1);
         }
+
+        Vector2 center
+        {
+            get
+            {
+                return new Vector2(gameSprite.Width / 2, gameSprite.Height / 2);
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, float scale, bool center)
+        {
+            spriteBatch.Draw(gameSprite, position, null, tintColor, 0, this.center, scale, SpriteEffects.None, 1);
+        }
     }
 }

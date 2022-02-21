@@ -26,6 +26,7 @@ namespace OneMoreStepToLoveYou.GameInterface
             startButton = new button(graphics, font, 220, 100, 10, new Vector2(360, 640), "Start", Color.White, Color.GhostWhite, Color.Salmon, Color.Orange);
             startButton.Click += startOnClick;
             exit = new button(graphics, font, 220, 100, 10, new Vector2(360, 760), "Exit", Color.White, Color.GhostWhite, Color.Salmon, Color.Orange);
+            exit.Click += exitGame;
             this.bg = new Sprite(bg, Vector2.Zero, Color.White);
             //MediaPlayer.Volume = 0.5f;
             MediaPlayer.IsRepeating = true;
@@ -36,6 +37,11 @@ namespace OneMoreStepToLoveYou.GameInterface
         {
             Game1.playSound(Game1.Click, 0.3f);
             Game1.changeSceneTo(start_lv);
+        }
+
+        private static void exitGame(object sender, System.EventArgs e)
+        {
+            Game1.self.Exit();
         }
 
         public void Update(float animator_elapsed)
