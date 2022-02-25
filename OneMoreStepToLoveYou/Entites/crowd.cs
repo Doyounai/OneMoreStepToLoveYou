@@ -85,7 +85,7 @@ namespace OneMoreStepToLoveYou.Entites
         public void Draw(SpriteBatch spriteBatch)
         {
             //sprite.Draw(spriteBatch);
-            animator.DrawFrame(spriteBatch, kaninKitRail.convertGridPosToVectorPos(m_gridPosition), currentAnimation);
+            animator.DrawFrame(spriteBatch, kaninKitRail.convertGridPosToVectorPos(m_gridPosition) + new Vector2(0, gameManager.characterHeight), currentAnimation);
         }
 
         public void goBack()

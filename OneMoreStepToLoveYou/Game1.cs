@@ -84,7 +84,7 @@ namespace OneMoreStepToLoveYou
             // TODO: Add your initialization logic here
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             this.IsMouseVisible = true;
             graphics.ApplyChanges();
             base.Initialize();

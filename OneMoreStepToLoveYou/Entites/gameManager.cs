@@ -60,6 +60,9 @@ namespace OneMoreStepToLoveYou.Entites
     #endregion
     public static class gameManager
     {
+        //character
+        public static float characterHeight = -32;
+
         public static bool is_PAUSE = false;
         public static ContentManager content;
 

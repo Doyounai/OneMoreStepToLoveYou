@@ -49,7 +49,7 @@ namespace OneMoreStepToLoveYou.Entites
         {
             if (isBeforeLv4)
                 return;
-            animator.DrawFrame(spriteBatch, position, 1);
+            animator.DrawFrame(spriteBatch, position + new Vector2(0, gameManager.characterHeight), 1);
         }
     }
 }
