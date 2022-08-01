@@ -122,7 +122,7 @@ namespace OneMoreStepToLoveYou
             resource = new gameResource(Content);
 
             //in game entites
-            scene_LV1();
+            titleLoad();
 
             // TODO: use this.Content to load your game content here
         }
